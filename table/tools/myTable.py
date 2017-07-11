@@ -10,7 +10,7 @@ logger = Logger(Logger.LEVEL_INFO, 'table_tools')
 config = Config()
 
 class MyType(object):
-    NORMAL_TYPE_ARR = ['sint32', 'uint32', 'string', 'float']
+    NORMAL_TYPE_ARR = ['sint32', 'uint32', 'string', 'float', 'double', 'bool', 'sint64', 'uint64']
     
     TYPE_NORAML = 0
     TYPE_USER   = 1

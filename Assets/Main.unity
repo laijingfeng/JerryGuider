@@ -121,7 +121,7 @@ MonoBehaviour:
   m_DoOnGUI: 0
   m_LogDeleteByTime: 1
   m_OnlyUseInEditor: 1
-  m_IsNowEditor: 1
+  m_IsNowEditor: 0
 --- !u!4 &49463448
 Transform:
   m_ObjectHideFlags: 0

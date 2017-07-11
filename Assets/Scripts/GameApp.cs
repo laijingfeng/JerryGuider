@@ -1,4 +1,5 @@
 ﻿using Jerry;
+using Table;
 using UnityEngine;
 
 public class GameApp : MonoBehaviour
@@ -17,7 +18,7 @@ public class GameApp : MonoBehaviour
 
     private void GameLogicStart()
     {
-        Table.TestA testA = null;
+        TestA testA = null;
         if (TestATblMgr.Inst.TryGetValue(10000, out testA))
         {
             JerryDebug.Inst.LogInfo(testA, JerryDebug.LogTag.All, true);
@@ -27,7 +28,7 @@ public class GameApp : MonoBehaviour
             Debug.LogError("not exist");
         }
 
-        Table.TestB testB = null;
+        TestB testB = null;
         if (TestBTblMgr.Inst.TryGetValue(TestBTblMgr.MakeKey(10000, 10000), out testB))
         {
             JerryDebug.Inst.LogInfo(testB, JerryDebug.LogTag.All, true);

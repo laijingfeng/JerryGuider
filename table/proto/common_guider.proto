@@ -1,0 +1,9 @@
+package Common;
+
+enum GuiderMsgCmd
+{
+    INVALID	= 0;
+	OPEN	= 1;
+	CLOSE	= 2;
+	Reopen	= 3;
+}
