@@ -102,6 +102,24 @@ namespace Table
     private bool ShouldSerializeguiderUI_id() { return guiderUI_idSpecified; }
     private void ResetguiderUI_id() { guiderUI_idSpecified = false; }
     
+
+    private string _ui_camera;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"ui_camera", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string ui_camera
+    {
+      get { return _ui_camera?? ""; }
+      set { _ui_camera = value; }
+    }
+    //Here has been deleted XmlIgnore
+    [global::System.ComponentModel.Browsable(false)]
+    public bool ui_cameraSpecified
+    {
+      get { return _ui_camera != null; }
+      set { if (value == (_ui_camera== null)) _ui_camera = value ? ui_camera : (string)null; }
+    }
+    private bool ShouldSerializeui_camera() { return ui_cameraSpecified; }
+    private void Resetui_camera() { ui_cameraSpecified = false; }
+    
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -193,11 +211,68 @@ namespace Table
     private void Resetstatistical() { statisticalSpecified = false; }
     
 
+    private string _node_path;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"node_path", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string node_path
+    {
+      get { return _node_path?? ""; }
+      set { _node_path = value; }
+    }
+    //Here has been deleted XmlIgnore
+    [global::System.ComponentModel.Browsable(false)]
+    public bool node_pathSpecified
+    {
+      get { return _node_path != null; }
+      set { if (value == (_node_path== null)) _node_path = value ? node_path : (string)null; }
+    }
+    private bool ShouldSerializenode_path() { return node_pathSpecified; }
+    private void Resetnode_path() { node_pathSpecified = false; }
+    
+
+    private Common.GuiderAnimType? _ui_anim_type;
+    /// <summary>
+    /// 提示动画类型
+    /// </summary>
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"ui_anim_type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Common.GuiderAnimType ui_anim_type
+    {
+      get { return _ui_anim_type?? Common.GuiderAnimType.ANIM_TYPE_NONE; }
+      set { _ui_anim_type = value; }
+    }
+    //Here has been deleted XmlIgnore
+    [global::System.ComponentModel.Browsable(false)]
+    public bool ui_anim_typeSpecified
+    {
+      get { return _ui_anim_type != null; }
+      set { if (value == (_ui_anim_type== null)) _ui_anim_type = value ? ui_anim_type : (Common.GuiderAnimType?)null; }
+    }
+    private bool ShouldSerializeui_anim_type() { return ui_anim_typeSpecified; }
+    private void Resetui_anim_type() { ui_anim_typeSpecified = false; }
+    
+
+    private string _attach_ui;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"attach_ui", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string attach_ui
+    {
+      get { return _attach_ui?? ""; }
+      set { _attach_ui = value; }
+    }
+    //Here has been deleted XmlIgnore
+    [global::System.ComponentModel.Browsable(false)]
+    public bool attach_uiSpecified
+    {
+      get { return _attach_ui != null; }
+      set { if (value == (_attach_ui== null)) _attach_ui = value ? attach_ui : (string)null; }
+    }
+    private bool ShouldSerializeattach_ui() { return attach_uiSpecified; }
+    private void Resetattach_ui() { attach_uiSpecified = false; }
+    
+
     private bool? _send_finish;
     /// <summary>
     /// 做完这步可认为结束
     /// </summary>
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"send_finish", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"send_finish", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public bool send_finish
     {
       get { return _send_finish?? default(bool); }
@@ -212,6 +287,105 @@ namespace Table
     }
     private bool ShouldSerializesend_finish() { return send_finishSpecified; }
     private void Resetsend_finish() { send_finishSpecified = false; }
+    
+
+    private string _ui_camera;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"ui_camera", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string ui_camera
+    {
+      get { return _ui_camera?? ""; }
+      set { _ui_camera = value; }
+    }
+    //Here has been deleted XmlIgnore
+    [global::System.ComponentModel.Browsable(false)]
+    public bool ui_cameraSpecified
+    {
+      get { return _ui_camera != null; }
+      set { if (value == (_ui_camera== null)) _ui_camera = value ? ui_camera : (string)null; }
+    }
+    private bool ShouldSerializeui_camera() { return ui_cameraSpecified; }
+    private void Resetui_camera() { ui_cameraSpecified = false; }
+    
+
+    private Common.GuiderTriggerType? _begin_type;
+    /// <summary>
+    /// 开始方式
+    /// </summary>
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"begin_type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Common.GuiderTriggerType begin_type
+    {
+      get { return _begin_type?? Common.GuiderTriggerType.TRIGGER_INVALID; }
+      set { _begin_type = value; }
+    }
+    //Here has been deleted XmlIgnore
+    [global::System.ComponentModel.Browsable(false)]
+    public bool begin_typeSpecified
+    {
+      get { return _begin_type != null; }
+      set { if (value == (_begin_type== null)) _begin_type = value ? begin_type : (Common.GuiderTriggerType?)null; }
+    }
+    private bool ShouldSerializebegin_type() { return begin_typeSpecified; }
+    private void Resetbegin_type() { begin_typeSpecified = false; }
+    
+
+    private Common.GuiderTriggerType? _end_type;
+    /// <summary>
+    /// 结束方式
+    /// </summary>
+    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"end_type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Common.GuiderTriggerType end_type
+    {
+      get { return _end_type?? Common.GuiderTriggerType.TRIGGER_INVALID; }
+      set { _end_type = value; }
+    }
+    //Here has been deleted XmlIgnore
+    [global::System.ComponentModel.Browsable(false)]
+    public bool end_typeSpecified
+    {
+      get { return _end_type != null; }
+      set { if (value == (_end_type== null)) _end_type = value ? end_type : (Common.GuiderTriggerType?)null; }
+    }
+    private bool ShouldSerializeend_type() { return end_typeSpecified; }
+    private void Resetend_type() { end_typeSpecified = false; }
+    
+
+    private bool? _need_mask;
+    /// <summary>
+    /// 是否需要遮罩
+    /// </summary>
+    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"need_mask", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool need_mask
+    {
+      get { return _need_mask?? default(bool); }
+      set { _need_mask = value; }
+    }
+    //Here has been deleted XmlIgnore
+    [global::System.ComponentModel.Browsable(false)]
+    public bool need_maskSpecified
+    {
+      get { return _need_mask != null; }
+      set { if (value == (_need_mask== null)) _need_mask = value ? need_mask : (bool?)null; }
+    }
+    private bool ShouldSerializeneed_mask() { return need_maskSpecified; }
+    private void Resetneed_mask() { need_maskSpecified = false; }
+    
+
+    private string _tip_text;
+    [global::ProtoBuf.ProtoMember(12, IsRequired = false, Name=@"tip_text", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string tip_text
+    {
+      get { return _tip_text?? ""; }
+      set { _tip_text = value; }
+    }
+    //Here has been deleted XmlIgnore
+    [global::System.ComponentModel.Browsable(false)]
+    public bool tip_textSpecified
+    {
+      get { return _tip_text != null; }
+      set { if (value == (_tip_text== null)) _tip_text = value ? tip_text : (string)null; }
+    }
+    private bool ShouldSerializetip_text() { return tip_textSpecified; }
+    private void Resettip_text() { tip_textSpecified = false; }
     
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -276,7 +450,7 @@ namespace Table
     [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"cmd", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public Common.GuiderMsgCmd cmd
     {
-      get { return _cmd?? Common.GuiderMsgCmd.INVALID; }
+      get { return _cmd?? Common.GuiderMsgCmd.MSG_CMD_INVALID; }
       set { _cmd = value; }
     }
     //Here has been deleted XmlIgnore

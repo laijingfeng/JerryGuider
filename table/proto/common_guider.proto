@@ -2,8 +2,23 @@ package Common;
 
 enum GuiderMsgCmd
 {
-    INVALID	= 0;
-	OPEN	= 1;
-	CLOSE	= 2;
-	Reopen	= 3;
+    MSG_CMD_INVALID	= 0;
+	MSG_CMD_OPEN	= 1;
+	MSG_CMD_CLOSE	= 2;
+	MSG_CMD_Reopen	= 3;
+}
+
+enum GuiderTriggerType
+{
+    TRIGGER_INVALID		= 0;//TODO:不能重名
+	TRIGGER_AUTO		= 1;
+	TRIGGER_MSG			= 2;
+	TRIGGER_CLICK_MASK	= 3;//只用作结束
+}
+
+enum GuiderAnimType
+{
+    ANIM_TYPE_NONE	= 0;//无
+	ANIM_TYPE_CLICK	= 1;
+	ANIM_TYPE_ATTACH= 2;//附加
 }

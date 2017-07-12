@@ -12,19 +12,19 @@ _GUIDERMSGCMD = descriptor.EnumDescriptor(
   filename='GuiderMsgCmd',
   values=[
     descriptor.EnumValueDescriptor(
-      name='INVALID', index=0, number=0,
+      name='MSG_CMD_INVALID', index=0, number=0,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='OPEN', index=1, number=1,
+      name='MSG_CMD_OPEN', index=1, number=1,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='CLOSE', index=2, number=2,
+      name='MSG_CMD_CLOSE', index=2, number=2,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='Reopen', index=3, number=3,
+      name='MSG_CMD_Reopen', index=3, number=3,
       options=None,
       type=None),
   ],
@@ -32,10 +32,65 @@ _GUIDERMSGCMD = descriptor.EnumDescriptor(
 )
 
 
-INVALID = 0
-OPEN = 1
-CLOSE = 2
-Reopen = 3
+_GUIDERTRIGGERTYPE = descriptor.EnumDescriptor(
+  name='GuiderTriggerType',
+  full_name='Common.GuiderTriggerType',
+  filename='GuiderTriggerType',
+  values=[
+    descriptor.EnumValueDescriptor(
+      name='TRIGGER_INVALID', index=0, number=0,
+      options=None,
+      type=None),
+    descriptor.EnumValueDescriptor(
+      name='TRIGGER_AUTO', index=1, number=1,
+      options=None,
+      type=None),
+    descriptor.EnumValueDescriptor(
+      name='TRIGGER_MSG', index=2, number=2,
+      options=None,
+      type=None),
+    descriptor.EnumValueDescriptor(
+      name='TRIGGER_CLICK_MASK', index=3, number=3,
+      options=None,
+      type=None),
+  ],
+  options=None,
+)
+
+
+_GUIDERANIMTYPE = descriptor.EnumDescriptor(
+  name='GuiderAnimType',
+  full_name='Common.GuiderAnimType',
+  filename='GuiderAnimType',
+  values=[
+    descriptor.EnumValueDescriptor(
+      name='ANIM_TYPE_NONE', index=0, number=0,
+      options=None,
+      type=None),
+    descriptor.EnumValueDescriptor(
+      name='ANIM_TYPE_CLICK', index=1, number=1,
+      options=None,
+      type=None),
+    descriptor.EnumValueDescriptor(
+      name='ANIM_TYPE_ATTACH', index=2, number=2,
+      options=None,
+      type=None),
+  ],
+  options=None,
+)
+
+
+MSG_CMD_INVALID = 0
+MSG_CMD_OPEN = 1
+MSG_CMD_CLOSE = 2
+MSG_CMD_Reopen = 3
+TRIGGER_INVALID = 0
+TRIGGER_AUTO = 1
+TRIGGER_MSG = 2
+TRIGGER_CLICK_MASK = 3
+ANIM_TYPE_NONE = 0
+ANIM_TYPE_CLICK = 1
+ANIM_TYPE_ATTACH = 2
 
 
 

@@ -5,6 +5,7 @@ public class GameGuiderMgr : Singleton<GameGuiderMgr>
     public Table.Guider curGuider = null;
     public Table.GuiderUI curGuiderUI = null;
     private uint nextGuiderId = 0;
+    public string uiCameraName = "";
 
     private void CleanCurGuider()
     {
@@ -107,6 +108,11 @@ public class GameGuiderMgr : Singleton<GameGuiderMgr>
             CleanCurGuider();
             return false;
         }
+        uiCameraName = curGuider.ui_camera;
+        if (!string.IsNullOrEmpty(curGuiderUI.ui_camera))
+        {
+            uiCameraName = curGuiderUI.ui_camera;
+        }
         if (curGuider.is_server)
         {
             SetServerGuiderState(curGuider.id);
@@ -129,7 +135,7 @@ public class GameGuiderMgr : Singleton<GameGuiderMgr>
         if (curGuiderUI == null)
         {
             TrySetServerFinish();
-            
+
             if (GuiderTblMgr.Inst.TryGetValue(curGuider.next_id, out curGuider))
             {
                 LoadGuider(curGuider.id);
@@ -139,31 +145,13 @@ public class GameGuiderMgr : Singleton<GameGuiderMgr>
                 CleanCurGuider();
             }
         }
-    }
-
-    public void RefreshStep()
-    {
-        if (curGuiderUI != null)
-        {
-            if (GuiderUITblMgr.Inst.TryGetValue(curGuiderUI.next_id, out curGuiderUI))
-            {
-                return;
-            }
-        }
         else
         {
-            Table.Guider nextGuider = null;
-            if (GuiderTblMgr.Inst.TryGetValue(curGuider.next_id, out nextGuider))
+            if (!string.IsNullOrEmpty(curGuiderUI.ui_camera))
             {
-                LoadGuider(nextGuider.id);
-                return;
-            }
-            else
-            {
-                TrySetServerFinish();
+                uiCameraName = curGuiderUI.ui_camera;
             }
         }
-        CleanCurGuider();
     }
 
     private void TrySetServerFinish()

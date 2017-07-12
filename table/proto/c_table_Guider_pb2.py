@@ -43,6 +43,13 @@ _GUIDER = descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    descriptor.FieldDescriptor(
+      name='ui_camera', full_name='Table.Guider.ui_camera', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -102,9 +109,65 @@ _GUIDERUI = descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     descriptor.FieldDescriptor(
-      name='send_finish', full_name='Table.GuiderUI.send_finish', index=3,
-      number=4, type=8, cpp_type=7, label=1,
+      name='node_path', full_name='Table.GuiderUI.node_path', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='ui_anim_type', full_name='Table.GuiderUI.ui_anim_type', index=4,
+      number=5, type=14, cpp_type=8, label=1,
+      default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='attach_ui', full_name='Table.GuiderUI.attach_ui', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='send_finish', full_name='Table.GuiderUI.send_finish', index=6,
+      number=7, type=8, cpp_type=7, label=1,
       default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='ui_camera', full_name='Table.GuiderUI.ui_camera', index=7,
+      number=8, type=9, cpp_type=9, label=1,
+      default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='begin_type', full_name='Table.GuiderUI.begin_type', index=8,
+      number=9, type=14, cpp_type=8, label=1,
+      default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='end_type', full_name='Table.GuiderUI.end_type', index=9,
+      number=10, type=14, cpp_type=8, label=1,
+      default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='need_mask', full_name='Table.GuiderUI.need_mask', index=10,
+      number=11, type=8, cpp_type=7, label=1,
+      default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='tip_text', full_name='Table.GuiderUI.tip_text', index=11,
+      number=12, type=9, cpp_type=9, label=1,
+      default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -199,6 +262,9 @@ _GUIDERMSG_ARRAY = descriptor.Descriptor(
 import common_guider_pb2
 
 _GUIDER_ARRAY.fields_by_name['rows'].message_type = _GUIDER
+_GUIDERUI.fields_by_name['ui_anim_type'].enum_type = common_guider_pb2._GUIDERANIMTYPE
+_GUIDERUI.fields_by_name['begin_type'].enum_type = common_guider_pb2._GUIDERTRIGGERTYPE
+_GUIDERUI.fields_by_name['end_type'].enum_type = common_guider_pb2._GUIDERTRIGGERTYPE
 _GUIDERUI_ARRAY.fields_by_name['rows'].message_type = _GUIDERUI
 _GUIDERMSG.fields_by_name['cmd'].enum_type = common_guider_pb2._GUIDERMSGCMD
 _GUIDERMSG_ARRAY.fields_by_name['rows'].message_type = _GUIDERMSG

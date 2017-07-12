@@ -16,17 +16,48 @@ namespace Common
     public enum GuiderMsgCmd
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"INVALID", Value=0)]
-      INVALID = 0,
+      [global::ProtoBuf.ProtoEnum(Name=@"MSG_CMD_INVALID", Value=0)]
+      MSG_CMD_INVALID = 0,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"OPEN", Value=1)]
-      OPEN = 1,
+      [global::ProtoBuf.ProtoEnum(Name=@"MSG_CMD_OPEN", Value=1)]
+      MSG_CMD_OPEN = 1,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"CLOSE", Value=2)]
-      CLOSE = 2,
+      [global::ProtoBuf.ProtoEnum(Name=@"MSG_CMD_CLOSE", Value=2)]
+      MSG_CMD_CLOSE = 2,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"Reopen", Value=3)]
-      Reopen = 3
+      [global::ProtoBuf.ProtoEnum(Name=@"MSG_CMD_Reopen", Value=3)]
+      MSG_CMD_Reopen = 3
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"GuiderTriggerType")]
+    public enum GuiderTriggerType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"TRIGGER_INVALID", Value=0)]
+      TRIGGER_INVALID = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"TRIGGER_AUTO", Value=1)]
+      TRIGGER_AUTO = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"TRIGGER_MSG", Value=2)]
+      TRIGGER_MSG = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"TRIGGER_CLICK_MASK", Value=3)]
+      TRIGGER_CLICK_MASK = 3
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"GuiderAnimType")]
+    public enum GuiderAnimType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ANIM_TYPE_NONE", Value=0)]
+      ANIM_TYPE_NONE = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ANIM_TYPE_CLICK", Value=1)]
+      ANIM_TYPE_CLICK = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ANIM_TYPE_ATTACH", Value=2)]
+      ANIM_TYPE_ATTACH = 2
     }
   
 }
