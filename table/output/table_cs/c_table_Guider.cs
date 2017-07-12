@@ -81,6 +81,27 @@ namespace Table
     private bool ShouldSerializeis_server() { return is_serverSpecified; }
     private void Resetis_server() { is_serverSpecified = false; }
     
+
+    private uint? _guiderUI_id;
+    /// <summary>
+    /// 第一个UI引导
+    /// </summary>
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"guiderUI_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public uint guiderUI_id
+    {
+      get { return _guiderUI_id?? default(uint); }
+      set { _guiderUI_id = value; }
+    }
+    //Here has been deleted XmlIgnore
+    [global::System.ComponentModel.Browsable(false)]
+    public bool guiderUI_idSpecified
+    {
+      get { return _guiderUI_id != null; }
+      set { if (value == (_guiderUI_id== null)) _guiderUI_id = value ? guiderUI_id : (uint?)null; }
+    }
+    private bool ShouldSerializeguiderUI_id() { return guiderUI_idSpecified; }
+    private void ResetguiderUI_id() { guiderUI_idSpecified = false; }
+    
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -149,6 +170,48 @@ namespace Table
     }
     private bool ShouldSerializenext_id() { return next_idSpecified; }
     private void Resetnext_id() { next_idSpecified = false; }
+    
+
+    private bool? _statistical;
+    /// <summary>
+    /// 做统计
+    /// </summary>
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"statistical", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool statistical
+    {
+      get { return _statistical?? default(bool); }
+      set { _statistical = value; }
+    }
+    //Here has been deleted XmlIgnore
+    [global::System.ComponentModel.Browsable(false)]
+    public bool statisticalSpecified
+    {
+      get { return _statistical != null; }
+      set { if (value == (_statistical== null)) _statistical = value ? statistical : (bool?)null; }
+    }
+    private bool ShouldSerializestatistical() { return statisticalSpecified; }
+    private void Resetstatistical() { statisticalSpecified = false; }
+    
+
+    private bool? _send_finish;
+    /// <summary>
+    /// 做完这步可认为结束
+    /// </summary>
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"send_finish", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool send_finish
+    {
+      get { return _send_finish?? default(bool); }
+      set { _send_finish = value; }
+    }
+    //Here has been deleted XmlIgnore
+    [global::System.ComponentModel.Browsable(false)]
+    public bool send_finishSpecified
+    {
+      get { return _send_finish != null; }
+      set { if (value == (_send_finish== null)) _send_finish = value ? send_finish : (bool?)null; }
+    }
+    private bool ShouldSerializesend_finish() { return send_finishSpecified; }
+    private void Resetsend_finish() { send_finishSpecified = false; }
     
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
