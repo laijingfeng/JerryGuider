@@ -22,3 +22,10 @@ enum GuiderAnimType
 	ANIM_TYPE_CLICK	= 1;
 	ANIM_TYPE_ATTACH= 2;//附加
 }
+
+message Vec3
+{
+	optional float x	= 1;
+	optional float y	= 2;
+	optional float z	= 3;
+}
