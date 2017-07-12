@@ -2,18 +2,15 @@
 using Table;
 using UnityEngine;
 
-public class GameApp : MonoBehaviour
+public class GameApp : SingletonMono<GameApp>
 {
-    void Awake()
+    public override void Awake()
     {
+        base.Awake();
         MyTableLoader.Inst.LoadTables(() =>
         {
             GameLogicStart();
         });
-    }
-
-    void Start()
-    {
     }
 
     private void GameLogicStart()
@@ -36,6 +33,23 @@ public class GameApp : MonoBehaviour
         else
         {
             Debug.LogError("not exist");
+        }
+
+        ServerCmdLoginRsp();
+    }
+
+    public void ServerCmdSetGuiderState(uint id = 0)
+    {
+        PlayerPrefs.SetInt("ServerGuiderState", (int)id);
+    }
+
+    private void ServerCmdLoginRsp()
+    {
+        int id = PlayerPrefs.GetInt("ServerGuiderState", 0);
+        uint guiderId = (uint)id;
+        if (guiderId != 0)
+        {
+            GameGuiderMgr.Inst.TryDoGuider(guiderId);
         }
     }
 }
