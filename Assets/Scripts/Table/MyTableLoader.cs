@@ -9,8 +9,6 @@ public class MyTableLoader : TableLoader<MyTableLoader>
     public MyTableLoader()
         : base()
     {
-        AddLoader(new Loader(TestATblMgr.Inst, "Table/c_table_TestA"));
-        AddLoader(new Loader(TestBTblMgr.Inst, "Table/c_table_TestB"));
         AddLoader(new Loader(GuiderTblMgr.Inst, "Table/c_table_Guider"));
         AddLoader(new Loader(GuiderUITblMgr.Inst, "Table/c_table_GuiderUI"));
         AddLoader(new Loader(GuiderMsgTblMgr.Inst, "Table/c_table_GuiderMsg"));
@@ -32,27 +30,6 @@ public class MyTableLoader : TableLoader<MyTableLoader>
             //Load tables end
         }
         yield return this.WaitAllTableLoaded();
-    }
-}
-
-public class TestATblMgr : TableManager<TestA_ARRAY, TestA, int, TestATblMgr>
-{
-    protected override int GetKey(TestA table)
-    {
-        return table.id;
-    }
-}
-
-public class TestBTblMgr : TableManager<TestB_ARRAY, TestB, long, TestBTblMgr>
-{
-    public static long MakeKey(int id1, int id2)
-    {
-        return (((long)id1) << 32) + id2;
-    }
-
-    protected override long GetKey(TestB table)
-    {
-        return MakeKey(table.id1, table.id2);
     }
 }
 

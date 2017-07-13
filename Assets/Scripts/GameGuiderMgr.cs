@@ -137,7 +137,8 @@ public class GameGuiderMgr : Singleton<GameGuiderMgr>
         {
             TrySetServerFinish();
 
-            if (GuiderTblMgr.Inst.TryGetValue(curGuider.next_id, out curGuider))
+            if (curGuider.next_id != 0
+                && GuiderTblMgr.Inst.TryGetValue(curGuider.next_id, out curGuider))
             {
                 LoadGuider(curGuider.id);
             }

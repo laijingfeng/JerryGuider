@@ -1,5 +1,4 @@
 ﻿using Jerry;
-using Table;
 using UnityEngine;
 
 public class GameApp : SingletonMono<GameApp>
@@ -15,26 +14,6 @@ public class GameApp : SingletonMono<GameApp>
 
     private void GameLogicStart()
     {
-        TestA testA = null;
-        if (TestATblMgr.Inst.TryGetValue(10000, out testA))
-        {
-            JerryDebug.Inst.LogInfo(testA, JerryDebug.LogTag.All, true);
-        }
-        else
-        {
-            Debug.LogError("not exist");
-        }
-
-        TestB testB = null;
-        if (TestBTblMgr.Inst.TryGetValue(TestBTblMgr.MakeKey(10000, 10000), out testB))
-        {
-            JerryDebug.Inst.LogInfo(testB, JerryDebug.LogTag.All, true);
-        }
-        else
-        {
-            Debug.LogError("not exist");
-        }
-
         ServerCmdLoginRsp();
     }
 

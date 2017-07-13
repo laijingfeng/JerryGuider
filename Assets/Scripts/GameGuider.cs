@@ -32,10 +32,15 @@ public class GameGuider : MonoBehaviour
 
     #endregion UI
 
+    private const int GuiderCanvasSortingOrder = 10;
+    /// <summary>
+    /// 设置在相机视野内
+    /// </summary>
+    private const float GuiderCanvasPlaneDistance = 5;
+
     private uint id = 0;
     private bool awaked = false;
     private bool inited = false;
-    private const int GameGuiderSortingOrder = 10;
     private GameObject curTarget = null;
     /// <summary>
     /// 目标对象被加了Button组件，结束时要删除
@@ -48,9 +53,9 @@ public class GameGuider : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         m_GuiderCanvas = this.transform.GetComponent<Canvas>();
-        m_GuiderCanvas.sortingOrder = GameGuiderSortingOrder;
+        m_GuiderCanvas.sortingOrder = GuiderCanvasSortingOrder;
         m_FrontCanvas = this.transform.FindChild("Front").GetComponent<Canvas>();
-        m_FrontCanvas.sortingOrder = GameGuiderSortingOrder + 2;
+        m_FrontCanvas.sortingOrder = GuiderCanvasSortingOrder + 2;
 
         m_Mask = this.transform.FindChild("Mask");
         m_Mask.gameObject.SetActive(false);
@@ -112,6 +117,7 @@ public class GameGuider : MonoBehaviour
                     if (cameraS != null)
                     {
                         m_GuiderCanvas.worldCamera = cameraS;
+                        m_GuiderCanvas.planeDistance = GuiderCanvasPlaneDistance;
                     }
                 }
                 yield return new WaitForSeconds(0.1f);
@@ -244,7 +250,7 @@ public class GameGuider : MonoBehaviour
         if (tarCanvas != null)
         {
             tarCanvas.overrideSorting = true;
-            tarCanvas.sortingOrder = GameGuiderSortingOrder + 1;
+            tarCanvas.sortingOrder = GuiderCanvasSortingOrder + 1;
         }
 
         //不加这个，原来curTarget上的UI事件检测将因为新的Canvas检测不到
