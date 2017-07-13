@@ -185,6 +185,62 @@ _GUIDERUI = descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    descriptor.FieldDescriptor(
+      name='follow_type', full_name='Table.GuiderUI.follow_type', index=14,
+      number=15, type=14, cpp_type=8, label=1,
+      default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='use_replacement', full_name='Table.GuiderUI.use_replacement', index=15,
+      number=16, type=8, cpp_type=7, label=1,
+      default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='replacement_size', full_name='Table.GuiderUI.replacement_size', index=16,
+      number=17, type=11, cpp_type=10, label=1,
+      default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='replacement_offset', full_name='Table.GuiderUI.replacement_offset', index=17,
+      number=18, type=11, cpp_type=10, label=1,
+      default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='begin_event', full_name='Table.GuiderUI.begin_event', index=18,
+      number=19, type=11, cpp_type=10, label=1,
+      default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='end_event', full_name='Table.GuiderUI.end_event', index=19,
+      number=20, type=11, cpp_type=10, label=1,
+      default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='is_3d', full_name='Table.GuiderUI.is_3d', index=20,
+      number=21, type=8, cpp_type=7, label=1,
+      default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='camera_3d', full_name='Table.GuiderUI.camera_3d', index=21,
+      number=22, type=9, cpp_type=9, label=1,
+      default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -281,6 +337,11 @@ _GUIDERUI.fields_by_name['begin_type'].enum_type = common_guider_pb2._GUIDERTRIG
 _GUIDERUI.fields_by_name['end_type'].enum_type = common_guider_pb2._GUIDERTRIGGERTYPE
 _GUIDERUI.fields_by_name['tip_pos'].message_type = common_guider_pb2._VEC3
 _GUIDERUI.fields_by_name['follow_offset'].message_type = common_guider_pb2._VEC3
+_GUIDERUI.fields_by_name['follow_type'].enum_type = common_guider_pb2._GUIDERFOLLOWTYPE
+_GUIDERUI.fields_by_name['replacement_size'].message_type = common_guider_pb2._VEC3
+_GUIDERUI.fields_by_name['replacement_offset'].message_type = common_guider_pb2._VEC3
+_GUIDERUI.fields_by_name['begin_event'].message_type = common_guider_pb2._GUIDEREVENT
+_GUIDERUI.fields_by_name['end_event'].message_type = common_guider_pb2._GUIDEREVENT
 _GUIDERUI_ARRAY.fields_by_name['rows'].message_type = _GUIDERUI
 _GUIDERMSG.fields_by_name['cmd'].enum_type = common_guider_pb2._GUIDERMSGCMD
 _GUIDERMSG_ARRAY.fields_by_name['rows'].message_type = _GUIDERMSG

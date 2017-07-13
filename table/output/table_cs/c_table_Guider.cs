@@ -411,6 +411,135 @@ namespace Table
       get { return _follow_offset; }
       set { _follow_offset = value; }
     }
+
+    private Common.GuiderFollowType? _follow_type;
+    /// <summary>
+    /// UI动画刷新频率
+    /// </summary>
+    [global::ProtoBuf.ProtoMember(15, IsRequired = false, Name=@"follow_type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Common.GuiderFollowType follow_type
+    {
+      get { return _follow_type?? Common.GuiderFollowType.FOLLOW_ONCE; }
+      set { _follow_type = value; }
+    }
+    //Here has been deleted XmlIgnore
+    [global::System.ComponentModel.Browsable(false)]
+    public bool follow_typeSpecified
+    {
+      get { return _follow_type != null; }
+      set { if (value == (_follow_type== null)) _follow_type = value ? follow_type : (Common.GuiderFollowType?)null; }
+    }
+    private bool ShouldSerializefollow_type() { return follow_typeSpecified; }
+    private void Resetfollow_type() { follow_typeSpecified = false; }
+    
+
+    private bool? _use_replacement;
+    /// <summary>
+    /// 使用替代物体
+    /// </summary>
+    [global::ProtoBuf.ProtoMember(16, IsRequired = false, Name=@"use_replacement", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool use_replacement
+    {
+      get { return _use_replacement?? default(bool); }
+      set { _use_replacement = value; }
+    }
+    //Here has been deleted XmlIgnore
+    [global::System.ComponentModel.Browsable(false)]
+    public bool use_replacementSpecified
+    {
+      get { return _use_replacement != null; }
+      set { if (value == (_use_replacement== null)) _use_replacement = value ? use_replacement : (bool?)null; }
+    }
+    private bool ShouldSerializeuse_replacement() { return use_replacementSpecified; }
+    private void Resetuse_replacement() { use_replacementSpecified = false; }
+    
+
+    private Common.Vec3 _replacement_size = null;
+    /// <summary>
+    /// 替代物大小
+    /// </summary>
+    [global::ProtoBuf.ProtoMember(17, IsRequired = false, Name=@"replacement_size", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Common.Vec3 replacement_size
+    {
+      get { return _replacement_size; }
+      set { _replacement_size = value; }
+    }
+
+    private Common.Vec3 _replacement_offset = null;
+    /// <summary>
+    /// 替代物偏移
+    /// </summary>
+    [global::ProtoBuf.ProtoMember(18, IsRequired = false, Name=@"replacement_offset", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Common.Vec3 replacement_offset
+    {
+      get { return _replacement_offset; }
+      set { _replacement_offset = value; }
+    }
+
+    private Common.GuiderEvent _begin_event = null;
+    /// <summary>
+    /// 开始事件
+    /// </summary>
+    [global::ProtoBuf.ProtoMember(19, IsRequired = false, Name=@"begin_event", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Common.GuiderEvent begin_event
+    {
+      get { return _begin_event; }
+      set { _begin_event = value; }
+    }
+
+    private Common.GuiderEvent _end_event = null;
+    /// <summary>
+    /// 结束事件
+    /// </summary>
+    [global::ProtoBuf.ProtoMember(20, IsRequired = false, Name=@"end_event", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Common.GuiderEvent end_event
+    {
+      get { return _end_event; }
+      set { _end_event = value; }
+    }
+
+    private bool? _is_3d;
+    /// <summary>
+    /// 是否是3D
+    /// </summary>
+    [global::ProtoBuf.ProtoMember(21, IsRequired = false, Name=@"is_3d", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool is_3d
+    {
+      get { return _is_3d?? default(bool); }
+      set { _is_3d = value; }
+    }
+    //Here has been deleted XmlIgnore
+    [global::System.ComponentModel.Browsable(false)]
+    public bool is_3dSpecified
+    {
+      get { return _is_3d != null; }
+      set { if (value == (_is_3d== null)) _is_3d = value ? is_3d : (bool?)null; }
+    }
+    private bool ShouldSerializeis_3d() { return is_3dSpecified; }
+    private void Resetis_3d() { is_3dSpecified = false; }
+    
+
+    private string _camera_3d;
+    [global::ProtoBuf.ProtoMember(22, IsRequired = false, Name=@"camera_3d", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string camera_3d
+    {
+      get { return _camera_3d?? ""; }
+      set { _camera_3d = value; }
+    }
+    //Here has been deleted XmlIgnore
+    [global::System.ComponentModel.Browsable(false)]
+    public bool camera_3dSpecified
+    {
+      get { return _camera_3d != null; }
+      set { if (value == (_camera_3d== null)) _camera_3d = value ? camera_3d : (string)null; }
+    }
+    private bool ShouldSerializecamera_3d() { return camera_3dSpecified; }
+    private void Resetcamera_3d() { camera_3dSpecified = false; }
+    
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

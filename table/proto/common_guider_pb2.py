@@ -58,6 +58,28 @@ _GUIDERTRIGGERTYPE = descriptor.EnumDescriptor(
 )
 
 
+_GUIDERFOLLOWTYPE = descriptor.EnumDescriptor(
+  name='GuiderFollowType',
+  full_name='Common.GuiderFollowType',
+  filename='GuiderFollowType',
+  values=[
+    descriptor.EnumValueDescriptor(
+      name='FOLLOW_ONCE', index=0, number=0,
+      options=None,
+      type=None),
+    descriptor.EnumValueDescriptor(
+      name='FOLLOW_TIME', index=1, number=1,
+      options=None,
+      type=None),
+    descriptor.EnumValueDescriptor(
+      name='FOLLOW_FRAME', index=2, number=2,
+      options=None,
+      type=None),
+  ],
+  options=None,
+)
+
+
 _GUIDERANIMTYPE = descriptor.EnumDescriptor(
   name='GuiderAnimType',
   full_name='Common.GuiderAnimType',
@@ -88,6 +110,9 @@ TRIGGER_INVALID = 0
 TRIGGER_AUTO = 1
 TRIGGER_MSG = 2
 TRIGGER_CLICK_MASK = 3
+FOLLOW_ONCE = 0
+FOLLOW_TIME = 1
+FOLLOW_FRAME = 2
 ANIM_TYPE_NONE = 0
 ANIM_TYPE_ATTACH = 1
 ANIM_TYPE_CLICK = 10
@@ -130,8 +155,41 @@ _VEC3 = descriptor.Descriptor(
   options=None)
 
 
+_GUIDEREVENT = descriptor.Descriptor(
+  name='GuiderEvent',
+  full_name='Common.GuiderEvent',
+  filename='common_guider.proto',
+  containing_type=None,
+  fields=[
+    descriptor.FieldDescriptor(
+      name='name', full_name='Common.GuiderEvent.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='par', full_name='Common.GuiderEvent.par', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],  # TODO(robinson): Implement.
+  enum_types=[
+  ],
+  options=None)
+
+
 
 class Vec3(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType
   DESCRIPTOR = _VEC3
+
+class GuiderEvent(message.Message):
+  __metaclass__ = reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _GUIDEREVENT
 

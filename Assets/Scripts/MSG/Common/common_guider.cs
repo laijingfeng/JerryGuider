@@ -76,6 +76,52 @@ namespace Common
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"GuiderEvent")]
+  public partial class GuiderEvent : global::ProtoBuf.IExtensible
+  {
+    public GuiderEvent() {}
+    
+
+    private string _name;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"name", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string name
+    {
+      get { return _name?? ""; }
+      set { _name = value; }
+    }
+    //Here has been deleted XmlIgnore
+    [global::System.ComponentModel.Browsable(false)]
+    public bool nameSpecified
+    {
+      get { return _name != null; }
+      set { if (value == (_name== null)) _name = value ? name : (string)null; }
+    }
+    private bool ShouldSerializename() { return nameSpecified; }
+    private void Resetname() { nameSpecified = false; }
+    
+
+    private string _par;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"par", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string par
+    {
+      get { return _par?? ""; }
+      set { _par = value; }
+    }
+    //Here has been deleted XmlIgnore
+    [global::System.ComponentModel.Browsable(false)]
+    public bool parSpecified
+    {
+      get { return _par != null; }
+      set { if (value == (_par== null)) _par = value ? par : (string)null; }
+    }
+    private bool ShouldSerializepar() { return parSpecified; }
+    private void Resetpar() { parSpecified = false; }
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
     [global::ProtoBuf.ProtoContract(Name=@"GuiderMsgCmd")]
     public enum GuiderMsgCmd
     {
@@ -108,6 +154,20 @@ namespace Common
             
       [global::ProtoBuf.ProtoEnum(Name=@"TRIGGER_CLICK_MASK", Value=3)]
       TRIGGER_CLICK_MASK = 3
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"GuiderFollowType")]
+    public enum GuiderFollowType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"FOLLOW_ONCE", Value=0)]
+      FOLLOW_ONCE = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"FOLLOW_TIME", Value=1)]
+      FOLLOW_TIME = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"FOLLOW_FRAME", Value=2)]
+      FOLLOW_FRAME = 2
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"GuiderAnimType")]

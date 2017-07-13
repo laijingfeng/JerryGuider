@@ -576,6 +576,23 @@ public class GameGuider : MonoBehaviour
         }
     }
 
+    [ContextMenu("当前引导信息")]
+    private void EditorCurGuider()
+    {
+        if (!Application.isPlaying)
+        {
+            Debug.LogWarning("运行时才可用");
+            return;
+        }
+        if (!GameGuiderMgr.Inst.IsInGuider())
+        {
+            JerryDebug.Inst.LogInfo("不在引导中");
+            return;
+        }
+        JerryDebug.Inst.LogInfo(GameGuiderMgr.Inst.curGuider, JerryDebug.LogTag.All, true);
+        JerryDebug.Inst.LogInfo(GameGuiderMgr.Inst.curGuiderUI, JerryDebug.LogTag.All, true);
+    }
+
     [ContextMenu("跳过当前步")]
     private void EditorJumpCurStep()
     {

@@ -10,10 +10,17 @@ enum GuiderMsgCmd
 
 enum GuiderTriggerType
 {
-    TRIGGER_INVALID		= 0;//TODO:不能重名
+    TRIGGER_INVALID		= 0;
 	TRIGGER_AUTO		= 1;
 	TRIGGER_MSG			= 2;
 	TRIGGER_CLICK_MASK	= 3;//只用作结束
+}
+
+enum GuiderFollowType
+{
+    FOLLOW_ONCE	= 0;
+	FOLLOW_TIME	= 1;
+	FOLLOW_FRAME= 2;
 }
 
 enum GuiderAnimType
@@ -29,4 +36,10 @@ message Vec3
 	optional float x	= 1;
 	optional float y	= 2;
 	optional float z	= 3;
+}
+
+message GuiderEvent
+{
+	optional string name= 1;
+	optional string par	= 2;
 }
