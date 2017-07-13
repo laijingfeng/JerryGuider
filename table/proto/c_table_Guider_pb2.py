@@ -165,9 +165,23 @@ _GUIDERUI = descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     descriptor.FieldDescriptor(
-      name='tip_text', full_name='Table.GuiderUI.tip_text', index=11,
-      number=12, type=9, cpp_type=9, label=1,
+      name='tip_pos', full_name='Table.GuiderUI.tip_pos', index=11,
+      number=12, type=11, cpp_type=10, label=1,
+      default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='tip_text', full_name='Table.GuiderUI.tip_text', index=12,
+      number=13, type=9, cpp_type=9, label=1,
       default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='follow_offset', full_name='Table.GuiderUI.follow_offset', index=13,
+      number=14, type=11, cpp_type=10, label=1,
+      default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -265,6 +279,8 @@ _GUIDER_ARRAY.fields_by_name['rows'].message_type = _GUIDER
 _GUIDERUI.fields_by_name['ui_anim_type'].enum_type = common_guider_pb2._GUIDERANIMTYPE
 _GUIDERUI.fields_by_name['begin_type'].enum_type = common_guider_pb2._GUIDERTRIGGERTYPE
 _GUIDERUI.fields_by_name['end_type'].enum_type = common_guider_pb2._GUIDERTRIGGERTYPE
+_GUIDERUI.fields_by_name['tip_pos'].message_type = common_guider_pb2._VEC3
+_GUIDERUI.fields_by_name['follow_offset'].message_type = common_guider_pb2._VEC3
 _GUIDERUI_ARRAY.fields_by_name['rows'].message_type = _GUIDERUI
 _GUIDERMSG.fields_by_name['cmd'].enum_type = common_guider_pb2._GUIDERMSGCMD
 _GUIDERMSG_ARRAY.fields_by_name['rows'].message_type = _GUIDERMSG

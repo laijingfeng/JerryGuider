@@ -1,4 +1,6 @@
-﻿using Jerry;
+﻿using Common;
+using Jerry;
+using UnityEngine;
 
 public class GameGuiderMgr : Singleton<GameGuiderMgr>
 {
@@ -14,6 +16,15 @@ public class GameGuiderMgr : Singleton<GameGuiderMgr>
     }
 
     #region 对外接口
+
+    public void StopGuider(bool stopServer = false)
+    {
+        CleanCurGuider();
+        if (stopServer)
+        {
+            SetServerGuiderState();
+        }
+    }
 
     public bool IsInGuider()
     {
@@ -82,20 +93,6 @@ public class GameGuiderMgr : Singleton<GameGuiderMgr>
         GameGuider.Register(id);
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="id">0是标空</param>
-    public void SetServerGuiderState(uint id = 0)
-    {
-        GameApp.Inst.ServerCmdSetGuiderState(id);
-    }
-
-    public static uint Lev2GuiderId(uint lev)
-    {
-        return 10000 + lev * 10;
-    }
-
     public bool LoadGuider(uint id)
     {
         if (!GuiderTblMgr.Inst.TryGetValue(id, out curGuider))
@@ -120,13 +117,17 @@ public class GameGuiderMgr : Singleton<GameGuiderMgr>
         return true;
     }
 
-    public void FinishStep()
+    public void FinishCurStep()
     {
         if (curGuiderUI != null)
         {
             if (curGuiderUI.send_finish)
             {
                 TrySetServerFinish();
+            }
+            if (curGuiderUI.statistical)
+            {
+                //TODO:send server
             }
             GuiderUITblMgr.Inst.TryGetValue(curGuiderUI.next_id, out curGuiderUI);
         }
@@ -154,6 +155,8 @@ public class GameGuiderMgr : Singleton<GameGuiderMgr>
         }
     }
 
+    #endregion 对外接口
+
     private void TrySetServerFinish()
     {
         //如果有了NextGuider，不能覆盖掉
@@ -163,5 +166,26 @@ public class GameGuiderMgr : Singleton<GameGuiderMgr>
         }
     }
 
-    #endregion 对外接口
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="id">0是标空</param>
+    private void SetServerGuiderState(uint id = 0)
+    {
+        GameApp.Inst.ServerCmdSetGuiderState(id);
+    }
+
+    #region 辅助
+
+    public static uint Lev2GuiderId(uint lev)
+    {
+        return 10000 + lev * 10;
+    }
+
+    public static Vector3 Vec3ToVector3(Vec3 vec)
+    {
+        return new Vector3(vec.x, vec.y, vec.z);
+    }
+
+    #endregion 辅助
 }

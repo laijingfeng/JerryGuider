@@ -94,4 +94,44 @@ ANIM_TYPE_ATTACH = 2
 
 
 
+_VEC3 = descriptor.Descriptor(
+  name='Vec3',
+  full_name='Common.Vec3',
+  filename='common_guider.proto',
+  containing_type=None,
+  fields=[
+    descriptor.FieldDescriptor(
+      name='x', full_name='Common.Vec3.x', index=0,
+      number=1, type=2, cpp_type=6, label=1,
+      default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='y', full_name='Common.Vec3.y', index=1,
+      number=2, type=2, cpp_type=6, label=1,
+      default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='z', full_name='Common.Vec3.z', index=2,
+      number=3, type=2, cpp_type=6, label=1,
+      default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],  # TODO(robinson): Implement.
+  enum_types=[
+  ],
+  options=None)
+
+
+
+class Vec3(message.Message):
+  __metaclass__ = reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _VEC3
 

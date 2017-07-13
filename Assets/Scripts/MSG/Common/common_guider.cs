@@ -12,6 +12,70 @@
 // Generated from: common_guider.proto
 namespace Common
 {
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"Vec3")]
+  public partial class Vec3 : global::ProtoBuf.IExtensible
+  {
+    public Vec3() {}
+    
+
+    private float? _x;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"x", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float x
+    {
+      get { return _x?? default(float); }
+      set { _x = value; }
+    }
+    //Here has been deleted XmlIgnore
+    [global::System.ComponentModel.Browsable(false)]
+    public bool xSpecified
+    {
+      get { return _x != null; }
+      set { if (value == (_x== null)) _x = value ? x : (float?)null; }
+    }
+    private bool ShouldSerializex() { return xSpecified; }
+    private void Resetx() { xSpecified = false; }
+    
+
+    private float? _y;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"y", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float y
+    {
+      get { return _y?? default(float); }
+      set { _y = value; }
+    }
+    //Here has been deleted XmlIgnore
+    [global::System.ComponentModel.Browsable(false)]
+    public bool ySpecified
+    {
+      get { return _y != null; }
+      set { if (value == (_y== null)) _y = value ? y : (float?)null; }
+    }
+    private bool ShouldSerializey() { return ySpecified; }
+    private void Resety() { ySpecified = false; }
+    
+
+    private float? _z;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"z", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float z
+    {
+      get { return _z?? default(float); }
+      set { _z = value; }
+    }
+    //Here has been deleted XmlIgnore
+    [global::System.ComponentModel.Browsable(false)]
+    public bool zSpecified
+    {
+      get { return _z != null; }
+      set { if (value == (_z== null)) _z = value ? z : (float?)null; }
+    }
+    private bool ShouldSerializez() { return zSpecified; }
+    private void Resetz() { zSpecified = false; }
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
     [global::ProtoBuf.ProtoContract(Name=@"GuiderMsgCmd")]
     public enum GuiderMsgCmd
     {

@@ -370,8 +370,20 @@ namespace Table
     private void Resetneed_mask() { need_maskSpecified = false; }
     
 
+    private Common.Vec3 _tip_pos = null;
+    /// <summary>
+    /// 提示位置
+    /// </summary>
+    [global::ProtoBuf.ProtoMember(12, IsRequired = false, Name=@"tip_pos", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Common.Vec3 tip_pos
+    {
+      get { return _tip_pos; }
+      set { _tip_pos = value; }
+    }
+
     private string _tip_text;
-    [global::ProtoBuf.ProtoMember(12, IsRequired = false, Name=@"tip_text", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(13, IsRequired = false, Name=@"tip_text", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string tip_text
     {
       get { return _tip_text?? ""; }
@@ -387,6 +399,18 @@ namespace Table
     private bool ShouldSerializetip_text() { return tip_textSpecified; }
     private void Resettip_text() { tip_textSpecified = false; }
     
+
+    private Common.Vec3 _follow_offset = null;
+    /// <summary>
+    /// UI动画偏移
+    /// </summary>
+    [global::ProtoBuf.ProtoMember(14, IsRequired = false, Name=@"follow_offset", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Common.Vec3 follow_offset
+    {
+      get { return _follow_offset; }
+      set { _follow_offset = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
