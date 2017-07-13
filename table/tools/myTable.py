@@ -199,15 +199,22 @@ class MyTableSheet(object):
 
     def add_des_to_cs(self, text):
         for column in self.columns:
-            find_t = 'private {} _{} = null;'.format(column.get_cs_type(),column.name)
+            # 结构是这个
+            find_t = 'private {} _{} = null;'.format(column.get_cs_type(), column.name)
             if text.count(find_t) > 0:
-                text = text.replace(find_t,find_t + '\n' + column.get_cs_des())
+                text = text.replace(find_t, find_t + '\n' + column.get_cs_des())
             else:
-                find_t = 'private {}? _{};'.format(column.get_cs_type(),column.name)
+                # 大部分是这个
+                find_t = 'private {}? _{};'.format(column.get_cs_type(), column.name)
                 if text.count(find_t) > 0:
-                    text = text.replace(find_t,find_t + '\n' + column.get_cs_des())
+                    text = text.replace(find_t, find_t + '\n' + column.get_cs_des())
                 else:
-                    continue
+                    # string是这个
+                    find_t = 'private {} _{};'.format(column.get_cs_type(), column.name)
+                    if text.count(find_t) > 0:
+                        text = text.replace(find_t, find_t + '\n' + column.get_cs_des())
+                    else:
+                        continue
         return text
                 
 class MyTable(object):
