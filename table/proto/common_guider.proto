@@ -19,8 +19,9 @@ enum GuiderTriggerType
 enum GuiderAnimType
 {
     ANIM_TYPE_NONE	= 0;//无
-	ANIM_TYPE_CLICK	= 1;
-	ANIM_TYPE_ATTACH= 2;//附加
+	ANIM_TYPE_ATTACH= 1;//附加
+	
+	ANIM_TYPE_CLICK	= 10;//对应动画id
 }
 
 message Vec3

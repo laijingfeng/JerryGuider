@@ -117,11 +117,11 @@ namespace Common
       [global::ProtoBuf.ProtoEnum(Name=@"ANIM_TYPE_NONE", Value=0)]
       ANIM_TYPE_NONE = 0,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ANIM_TYPE_CLICK", Value=1)]
-      ANIM_TYPE_CLICK = 1,
+      [global::ProtoBuf.ProtoEnum(Name=@"ANIM_TYPE_ATTACH", Value=1)]
+      ANIM_TYPE_ATTACH = 1,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ANIM_TYPE_ATTACH", Value=2)]
-      ANIM_TYPE_ATTACH = 2
+      [global::ProtoBuf.ProtoEnum(Name=@"ANIM_TYPE_CLICK", Value=10)]
+      ANIM_TYPE_CLICK = 10
     }
   
 }

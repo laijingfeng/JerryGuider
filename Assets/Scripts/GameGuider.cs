@@ -22,9 +22,10 @@ public class GameGuider : MonoBehaviour
     private Text m_TipText;
     private Transform m_Anim;
     /// <summary>
-    /// 通用UI动画，动画集，TODO
+    /// 通用UI动画，动画集
     /// </summary>
     private Transform m_AnimCommon;
+    private Animator m_AnimCommonCtr;
     /// <summary>
     /// 特殊动画
     /// </summary>
@@ -68,7 +69,8 @@ public class GameGuider : MonoBehaviour
 
         m_Anim = this.transform.FindChild("Front/Anim");
         m_AnimCommon = m_Anim.FindChild("Common");
-        m_AnimCommon.gameObject.SetActive(false);
+        m_AnimCommon.gameObject.SetActive(true);
+        m_AnimCommonCtr = m_AnimCommon.GetComponent<Animator>();
         m_AnimSpecial = m_Anim.FindChild("Special");
         m_AnimSpecial.gameObject.SetActive(false);
 
@@ -96,7 +98,7 @@ public class GameGuider : MonoBehaviour
 
             this.StopCoroutine("IE_FindCamera");
             this.StartCoroutine("IE_FindCamera");
-            
+
             BeginCurStep();
         }
     }
@@ -169,7 +171,7 @@ public class GameGuider : MonoBehaviour
         m_Tip.gameObject.SetActive(false);
         m_Mask.gameObject.SetActive(false);
         m_AnimSpecial.gameObject.SetActive(false);
-        m_AnimCommon.gameObject.SetActive(false);
+        SetAnimCommon(GuiderAnimType.ANIM_TYPE_NONE);
         curTarget = null;
     }
 
@@ -178,6 +180,14 @@ public class GameGuider : MonoBehaviour
         UnHighLight();
         GameGuiderMgr.Inst.StopGuider(stopServer);
         GuiderFinish();
+    }
+
+    private void SetAnimCommon(GuiderAnimType type)
+    {
+        if (m_AnimCommonCtr != null)
+        {
+            m_AnimCommonCtr.SetInteger("id", type.GetHashCode());
+        }
     }
 
     #region GuiderUI
@@ -326,7 +336,7 @@ public class GameGuider : MonoBehaviour
     /// <param name="isShow"></param>
     private void ShowOrHideAnim(bool isShow)
     {
-        m_AnimCommon.gameObject.SetActive(false);
+        SetAnimCommon(GuiderAnimType.ANIM_TYPE_NONE);
         m_AnimSpecial.gameObject.SetActive(false);
 
         if (isShow == false)
@@ -343,7 +353,7 @@ public class GameGuider : MonoBehaviour
                 break;
             case GuiderAnimType.ANIM_TYPE_CLICK:
                 {
-                    m_AnimCommon.gameObject.SetActive(true);
+                    SetAnimCommon(GameGuiderMgr.Inst.curGuiderUI.ui_anim_type);
                 }
                 break;
             case GuiderAnimType.ANIM_TYPE_ATTACH:
@@ -376,6 +386,7 @@ public class GameGuider : MonoBehaviour
         }
         m_TipText.text = GameGuiderMgr.Inst.curGuiderUI.tip_text;
         m_Tip.localPosition = GameGuiderMgr.Vec3ToVector3(GameGuiderMgr.Inst.curGuiderUI.tip_pos);
+        m_Tip.gameObject.SetActive(true);
     }
 
     public static void SendGuiderMsg(uint id)
@@ -614,7 +625,7 @@ public class GameGuider : MonoBehaviour
     }
 
 #endif
-     
+
     #endregion 编辑器
 
     private static GameGuider guider = null;

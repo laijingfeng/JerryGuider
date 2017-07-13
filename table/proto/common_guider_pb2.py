@@ -68,11 +68,11 @@ _GUIDERANIMTYPE = descriptor.EnumDescriptor(
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='ANIM_TYPE_CLICK', index=1, number=1,
+      name='ANIM_TYPE_ATTACH', index=1, number=1,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='ANIM_TYPE_ATTACH', index=2, number=2,
+      name='ANIM_TYPE_CLICK', index=2, number=10,
       options=None,
       type=None),
   ],
@@ -89,8 +89,8 @@ TRIGGER_AUTO = 1
 TRIGGER_MSG = 2
 TRIGGER_CLICK_MASK = 3
 ANIM_TYPE_NONE = 0
-ANIM_TYPE_CLICK = 1
-ANIM_TYPE_ATTACH = 2
+ANIM_TYPE_ATTACH = 1
+ANIM_TYPE_CLICK = 10
 
 
 
