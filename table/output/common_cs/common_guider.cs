@@ -83,6 +83,9 @@ namespace Common
     
 
     private string _name;
+    /// <summary>
+    /// 事件名
+    /// </summary>
     [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"name", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string name
     {
@@ -101,6 +104,9 @@ namespace Common
     
 
     private string _par;
+    /// <summary>
+    /// 参数
+    /// </summary>
     [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"par", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string par
     {
@@ -126,15 +132,27 @@ namespace Common
     public enum GuiderMsgCmd
     {
             
+      /// <summary>
+      /// 默认值
+      /// </summary>
       [global::ProtoBuf.ProtoEnum(Name=@"MSG_CMD_INVALID", Value=0)]
       MSG_CMD_INVALID = 0,
             
+      /// <summary>
+      /// 开启
+      /// </summary>
       [global::ProtoBuf.ProtoEnum(Name=@"MSG_CMD_OPEN", Value=1)]
       MSG_CMD_OPEN = 1,
             
+      /// <summary>
+      /// 结束
+      /// </summary>
       [global::ProtoBuf.ProtoEnum(Name=@"MSG_CMD_CLOSE", Value=2)]
       MSG_CMD_CLOSE = 2,
             
+      /// <summary>
+      /// 重新开启
+      /// </summary>
       [global::ProtoBuf.ProtoEnum(Name=@"MSG_CMD_Reopen", Value=3)]
       MSG_CMD_Reopen = 3
     }
@@ -143,15 +161,27 @@ namespace Common
     public enum GuiderTriggerType
     {
             
+      /// <summary>
+      /// 非法
+      /// </summary>
       [global::ProtoBuf.ProtoEnum(Name=@"TRIGGER_INVALID", Value=0)]
       TRIGGER_INVALID = 0,
             
+      /// <summary>
+      /// 自动
+      /// </summary>
       [global::ProtoBuf.ProtoEnum(Name=@"TRIGGER_AUTO", Value=1)]
       TRIGGER_AUTO = 1,
             
+      /// <summary>
+      /// 消息
+      /// </summary>
       [global::ProtoBuf.ProtoEnum(Name=@"TRIGGER_MSG", Value=2)]
       TRIGGER_MSG = 2,
             
+      /// <summary>
+      /// 点击遮罩，只用作结束
+      /// </summary>
       [global::ProtoBuf.ProtoEnum(Name=@"TRIGGER_CLICK_MASK", Value=3)]
       TRIGGER_CLICK_MASK = 3
     }
@@ -160,12 +190,21 @@ namespace Common
     public enum GuiderFollowType
     {
             
+      /// <summary>
+      /// 一次
+      /// </summary>
       [global::ProtoBuf.ProtoEnum(Name=@"FOLLOW_ONCE", Value=0)]
       FOLLOW_ONCE = 0,
             
+      /// <summary>
+      /// 定时
+      /// </summary>
       [global::ProtoBuf.ProtoEnum(Name=@"FOLLOW_TIME", Value=1)]
       FOLLOW_TIME = 1,
             
+      /// <summary>
+      /// 每帧
+      /// </summary>
       [global::ProtoBuf.ProtoEnum(Name=@"FOLLOW_FRAME", Value=2)]
       FOLLOW_FRAME = 2
     }
@@ -174,12 +213,21 @@ namespace Common
     public enum GuiderAnimType
     {
             
+      /// <summary>
+      /// 无
+      /// </summary>
       [global::ProtoBuf.ProtoEnum(Name=@"ANIM_TYPE_NONE", Value=0)]
       ANIM_TYPE_NONE = 0,
             
+      /// <summary>
+      /// 附加
+      /// </summary>
       [global::ProtoBuf.ProtoEnum(Name=@"ANIM_TYPE_ATTACH", Value=1)]
       ANIM_TYPE_ATTACH = 1,
             
+      /// <summary>
+      /// 对应动画id
+      /// </summary>
       [global::ProtoBuf.ProtoEnum(Name=@"ANIM_TYPE_CLICK", Value=10)]
       ANIM_TYPE_CLICK = 10
     }

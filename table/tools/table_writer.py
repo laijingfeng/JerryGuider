@@ -18,7 +18,7 @@ from logger import Logger
 
 DEBUG_MODE = False
 
-logger = Logger(Logger.LEVEL_ERROR, 'table_tools')
+logger = Logger()
 
 #================================================#
 #################### 配置模块 ####################
@@ -107,7 +107,7 @@ class TableWriter(object):
         except IOError:
             path = config.workbook_dir + '/' + workbook + '.xls'
             self.workbook = xlrd.open_workbook(path)
-        logger.info('打开工作簿|%s' % workbook)
+        #logger.info('打开工作簿|%s' % workbook)
 
         # 打开页签
         if type(sheet) == int or (type(sheet) == str and sheet.isdigit()):
@@ -146,8 +146,7 @@ class TableWriter(object):
                 try:
                     self.deal_row_values(row_values)
                 except Exception, e:
-                    logger.error(traceback.format_exc())
-                    logger.error('处理行数据失败|%d' % nrow)
+                    logger.error('处理行数据失败 表格:{},行号:{}\n数据:{}\n可能原因:数据类型不匹配，枚举值越界\n堆栈如下：\n{}'.format(output, nrow + 1, row_values, traceback.format_exc()))
                     raise e
 
         # 写入文件
@@ -156,7 +155,7 @@ class TableWriter(object):
         f.close()
 
     def deal_row_values(self, row_values):
-        logger.info('处理行数据|%s' % str(row_values))
+        #logger.info('处理行数据|%s' % str(row_values))
 
         row = self.row_array.rows.add()
         for descriptor in self.row_descriptor.fields:
@@ -374,10 +373,14 @@ if __name__ == '__main__':
         Usage(sys.argv[0])
         exit(-1)
 
+    file_abs_path = os.path.abspath(sys.argv[0])
+    file_abs_dir = os.path.split(file_abs_path)[0]
+    logger.set_config(Logger.LEVEL_ERROR, file_abs_dir + '/table_tools')
+    
     #print '======================================================='
-    print '******************** Dumping Table ********************'
+    #print '******************** Dumping Table ********************'
     #print '======================================================='
 
-    logger.info('Arguments: ' + str(args))
+    #logger.info('Arguments: ' + str(args))
     TableWriter(*args[:-1])(args[-1])
     

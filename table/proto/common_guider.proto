@@ -2,33 +2,33 @@ package Common;
 
 enum GuiderMsgCmd
 {
-    MSG_CMD_INVALID	= 0;
-	MSG_CMD_OPEN	= 1;
-	MSG_CMD_CLOSE	= 2;
-	MSG_CMD_Reopen	= 3;
+    MSG_CMD_INVALID	= 0; //默认值
+	MSG_CMD_OPEN	= 1; //开启
+	MSG_CMD_CLOSE	= 2; //结束
+	MSG_CMD_Reopen	= 3; //重新开启
 }
 
 enum GuiderTriggerType
 {
-    TRIGGER_INVALID		= 0;
-	TRIGGER_AUTO		= 1;
-	TRIGGER_MSG			= 2;
-	TRIGGER_CLICK_MASK	= 3;//只用作结束
+    TRIGGER_INVALID		= 0; //非法
+	TRIGGER_AUTO		= 1; //自动
+	TRIGGER_MSG			= 2; //消息
+	TRIGGER_CLICK_MASK	= 3; //点击遮罩，只用作结束
 }
 
 enum GuiderFollowType
 {
-    FOLLOW_ONCE	= 0;
-	FOLLOW_TIME	= 1;
-	FOLLOW_FRAME= 2;
+    FOLLOW_ONCE	= 0; //一次
+	FOLLOW_TIME	= 1; //定时
+	FOLLOW_FRAME= 2; //每帧
 }
 
 enum GuiderAnimType
 {
-    ANIM_TYPE_NONE	= 0;//无
-	ANIM_TYPE_ATTACH= 1;//附加
+    ANIM_TYPE_NONE	= 0; //无
+	ANIM_TYPE_ATTACH= 1; //附加
 	
-	ANIM_TYPE_CLICK	= 10;//对应动画id
+	ANIM_TYPE_CLICK	= 10; //对应动画id
 }
 
 message Vec3
@@ -40,6 +40,6 @@ message Vec3
 
 message GuiderEvent
 {
-	optional string name= 1;
-	optional string par	= 2;
+	optional string name= 1; //事件名
+	optional string par	= 2; //参数
 }

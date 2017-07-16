@@ -22,14 +22,6 @@ def ParseArg(argv):
         return True, [par]
     return False, None
 
-def execute_shell_command(args, wait = 'T'):
-    p = subprocess.Popen(args)
-    if wait == 'T':
-	ret = p.wait()
-	return ret
-    else:
-	return 0
-
 if __name__ == '__main__':
     
     reload(sys)

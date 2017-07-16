@@ -104,6 +104,9 @@ namespace Table
     
 
     private string _ui_camera;
+    /// <summary>
+    /// UI相机
+    /// </summary>
     [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"ui_camera", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string ui_camera
     {
@@ -212,6 +215,9 @@ namespace Table
     
 
     private string _node_path;
+    /// <summary>
+    /// 路径
+    /// </summary>
     [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"node_path", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string node_path
     {
@@ -251,6 +257,9 @@ namespace Table
     
 
     private string _attach_ui;
+    /// <summary>
+    /// 附加UI动画
+    /// </summary>
     [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"attach_ui", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string attach_ui
     {
@@ -290,6 +299,9 @@ namespace Table
     
 
     private string _ui_camera;
+    /// <summary>
+    /// UI相机出现变更
+    /// </summary>
     [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"ui_camera", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string ui_camera
     {
@@ -383,6 +395,9 @@ namespace Table
     }
 
     private string _tip_text;
+    /// <summary>
+    /// 提示内容
+    /// </summary>
     [global::ProtoBuf.ProtoMember(13, IsRequired = false, Name=@"tip_text", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string tip_text
     {
@@ -524,6 +539,9 @@ namespace Table
     
 
     private string _camera_3d;
+    /// <summary>
+    /// 3D相机
+    /// </summary>
     [global::ProtoBuf.ProtoMember(22, IsRequired = false, Name=@"camera_3d", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string camera_3d
     {

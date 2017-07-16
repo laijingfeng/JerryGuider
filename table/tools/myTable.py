@@ -6,7 +6,7 @@ from datetime import datetime
 from logger import Logger
 from config import Config
 
-logger = Logger(Logger.LEVEL_INFO, 'table_tools')
+logger = Logger()
 config = Config()
 
 class MyType(object):
@@ -36,28 +36,69 @@ class MyType(object):
         ret = MyType()
         if data.find('List.') != -1:
             ret.prefix = 'repeated'
-            data = data.split('.',1)[1]
+            data = data.split('.', 1)[1]
         else:
             ret.prefix = 'optional'
 
+        ret.name = data
         if MyType.NORMAL_TYPE_ARR.count(data) > 0:
-            ret.name = data
             ret.type = MyType.TYPE_NORAML
             return ret
-        
-        table = xlrd.open_workbook(config.user_type_table_path)
-        sheet = table.sheets()[0]
-        for i in range(sheet.nrows):
-            if i == 0:
-		continue
-            tname = MyTableTool.to_unicode(sheet.cell(i,0).value)
-            if tname == data:
-		ret.type = MyType.TYPE_USER
-		ret.name = data
-		ret.space = MyTableTool.to_unicode(sheet.cell(i,1).value)
-		ret.default_val = MyTableTool.to_unicode(sheet.cell(i,2).value)
-		return ret
+
+        userType = MyType.find_user_type(data)
+        if userType.type != MyType.TYPE_UNKNOW:
+            ret.type = MyType.TYPE_USER
+            ret.space = userType.space
+            ret.default_val = userType.default_val
+            return ret
 	
+        return ret
+
+    @classmethod
+    def find_user_type(cls, data):
+        ret = MyType()
+        if data.find('.') == -1: #自定义的一定有包名
+            return ret
+        package_name = data.split('.', 1)[0]
+        type_name = data.split('.', 1)[1]
+        list_common_proto = os.listdir(config.proto_path)
+        for filename in list_common_proto:
+            if filename.find('.proto') == -1 or filename.startswith('common_') == False:
+                continue
+            filepath = config.proto_path + '/' + filename
+            text = ''
+            text2 = ''
+            with open(filepath) as f:
+                text = f.read()
+            with open(filepath) as f:
+                text2 = f.readlines()
+            if text.find('package {};'.format(package_name)) == -1:
+                continue
+            
+            if text.find('message {}'.format(type_name)) != -1:
+                find_sure = False
+                for line in text2:
+                    if line.strip() == 'message {}'.format(type_name):
+                        find_sure = True
+                        break
+                if find_sure == True:
+                    ret.type = MyType.TYPE_USER
+                    ret.space = filename
+                    return ret
+            elif text.find('enum {}'.format(type_name)) != -1:
+                find_sure = False
+                for line in text2:
+                    if find_sure == True:
+                        if line.find('=') != -1:
+                            line_str = line.strip().split('=')[0].strip()
+                            ret.default_val = line_str
+                            break
+                    if line.strip() == 'enum {}'.format(type_name):
+                        find_sure = True
+                if find_sure == True:
+                    ret.type = MyType.TYPE_USER
+                    ret.space = filename
+                    return ret
         return ret
 
 class MyTableTool(object):
@@ -219,6 +260,10 @@ class MyTableSheet(object):
                 
 class MyTable(object):
     def __init__(self, excel_path):
+
+        file_abs_path = os.path.abspath(sys.argv[0])
+        file_abs_dir = os.path.split(file_abs_path)[0]
+        logger.set_config(Logger.LEVEL_INFO, file_abs_dir + '/table_tools')
         
         self.name = os.path.splitext(os.path.basename(excel_path))[0]
         self.sheets = []
@@ -300,7 +345,11 @@ class MyTable(object):
 
         for sheet in self.sheets:
             if sheet.use_type == use_type or sheet.use_type == MyTableTool.USE_TYPE_ALL:
-                os.system('python table_writer.py -s {} -p {} -m {} -o {} {}'.format(sheet.idx, table_prefix + self.name, sheet.name, table_prefix + sheet.name, self.name))
+                ret = os.system('python table_writer.py -s {} -p {} -m {} -o {} {}'.format(sheet.idx, table_prefix + self.name, sheet.name, table_prefix + sheet.name, self.name))
+                if ret != 0:
+                    logger.error('打表出错 : 表格文件:{} 页签:{}，详情见上一条日志'.format(self.name, sheet.name))
+                    return False
+        return True
 
     def to_cs(self, use_type):
         if use_type != MyTableTool.USE_TYPE_CLIENT and use_type != MyTableTool.USE_TYPE_SERVER:
@@ -333,7 +382,8 @@ class MyTable(object):
         cs_path = '{}{}{}.cs'.format(config.table_cs_path + '/', table_prefix, self.name)
 
         Config.delete_xml(cs_path)
-        self.add_des_to_cs(cs_path)
+        if config.enable_add_des == True:
+            self.add_des_to_cs(cs_path)
 
     def add_des_to_cs(self, cs_path):
         text = ''
