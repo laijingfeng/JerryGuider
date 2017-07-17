@@ -151,7 +151,7 @@ namespace Common
       MSG_CMD_CLOSE = 2,
             
       /// <summary>
-      /// 重新开启
+      /// 重做当前引导
       /// </summary>
       [global::ProtoBuf.ProtoEnum(Name=@"MSG_CMD_Reopen", Value=3)]
       MSG_CMD_Reopen = 3
@@ -177,13 +177,7 @@ namespace Common
       /// 消息
       /// </summary>
       [global::ProtoBuf.ProtoEnum(Name=@"TRIGGER_MSG", Value=2)]
-      TRIGGER_MSG = 2,
-            
-      /// <summary>
-      /// 点击遮罩，只用作结束
-      /// </summary>
-      [global::ProtoBuf.ProtoEnum(Name=@"TRIGGER_CLICK_MASK", Value=3)]
-      TRIGGER_CLICK_MASK = 3
+      TRIGGER_MSG = 2
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"GuiderFollowType")]

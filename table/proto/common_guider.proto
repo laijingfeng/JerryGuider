@@ -5,7 +5,7 @@ enum GuiderMsgCmd
     MSG_CMD_INVALID	= 0; //默认值
 	MSG_CMD_OPEN	= 1; //开启
 	MSG_CMD_CLOSE	= 2; //结束
-	MSG_CMD_Reopen	= 3; //重新开启
+	MSG_CMD_Reopen	= 3; //重做当前引导
 }
 
 enum GuiderTriggerType
@@ -13,7 +13,6 @@ enum GuiderTriggerType
     TRIGGER_INVALID		= 0; //非法
 	TRIGGER_AUTO		= 1; //自动
 	TRIGGER_MSG			= 2; //消息
-	TRIGGER_CLICK_MASK	= 3; //点击遮罩，只用作结束
 }
 
 enum GuiderFollowType

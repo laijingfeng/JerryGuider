@@ -214,74 +214,11 @@ namespace Table
     private void Resetstatistical() { statisticalSpecified = false; }
     
 
-    private string _node_path;
-    /// <summary>
-    /// 路径
-    /// </summary>
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"node_path", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string node_path
-    {
-      get { return _node_path?? ""; }
-      set { _node_path = value; }
-    }
-    //Here has been deleted XmlIgnore
-    [global::System.ComponentModel.Browsable(false)]
-    public bool node_pathSpecified
-    {
-      get { return _node_path != null; }
-      set { if (value == (_node_path== null)) _node_path = value ? node_path : (string)null; }
-    }
-    private bool ShouldSerializenode_path() { return node_pathSpecified; }
-    private void Resetnode_path() { node_pathSpecified = false; }
-    
-
-    private Common.GuiderAnimType? _ui_anim_type;
-    /// <summary>
-    /// 提示动画类型
-    /// </summary>
-    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"ui_anim_type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public Common.GuiderAnimType ui_anim_type
-    {
-      get { return _ui_anim_type?? Common.GuiderAnimType.ANIM_TYPE_NONE; }
-      set { _ui_anim_type = value; }
-    }
-    //Here has been deleted XmlIgnore
-    [global::System.ComponentModel.Browsable(false)]
-    public bool ui_anim_typeSpecified
-    {
-      get { return _ui_anim_type != null; }
-      set { if (value == (_ui_anim_type== null)) _ui_anim_type = value ? ui_anim_type : (Common.GuiderAnimType?)null; }
-    }
-    private bool ShouldSerializeui_anim_type() { return ui_anim_typeSpecified; }
-    private void Resetui_anim_type() { ui_anim_typeSpecified = false; }
-    
-
-    private string _attach_ui;
-    /// <summary>
-    /// 附加UI动画
-    /// </summary>
-    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"attach_ui", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string attach_ui
-    {
-      get { return _attach_ui?? ""; }
-      set { _attach_ui = value; }
-    }
-    //Here has been deleted XmlIgnore
-    [global::System.ComponentModel.Browsable(false)]
-    public bool attach_uiSpecified
-    {
-      get { return _attach_ui != null; }
-      set { if (value == (_attach_ui== null)) _attach_ui = value ? attach_ui : (string)null; }
-    }
-    private bool ShouldSerializeattach_ui() { return attach_uiSpecified; }
-    private void Resetattach_ui() { attach_uiSpecified = false; }
-    
-
     private bool? _send_finish;
     /// <summary>
     /// 做完这步可认为结束
     /// </summary>
-    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"send_finish", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"send_finish", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public bool send_finish
     {
       get { return _send_finish?? default(bool); }
@@ -302,7 +239,7 @@ namespace Table
     /// <summary>
     /// UI相机出现变更
     /// </summary>
-    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"ui_camera", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"ui_camera", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string ui_camera
     {
       get { return _ui_camera?? ""; }
@@ -319,11 +256,107 @@ namespace Table
     private void Resetui_camera() { ui_cameraSpecified = false; }
     
 
+    private string _node_path;
+    /// <summary>
+    /// 路径
+    /// </summary>
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"node_path", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string node_path
+    {
+      get { return _node_path?? ""; }
+      set { _node_path = value; }
+    }
+    //Here has been deleted XmlIgnore
+    [global::System.ComponentModel.Browsable(false)]
+    public bool node_pathSpecified
+    {
+      get { return _node_path != null; }
+      set { if (value == (_node_path== null)) _node_path = value ? node_path : (string)null; }
+    }
+    private bool ShouldSerializenode_path() { return node_pathSpecified; }
+    private void Resetnode_path() { node_pathSpecified = false; }
+    
+
+    private Common.GuiderAnimType? _ui_anim_type;
+    /// <summary>
+    /// 提示动画类型
+    /// </summary>
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"ui_anim_type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Common.GuiderAnimType ui_anim_type
+    {
+      get { return _ui_anim_type?? Common.GuiderAnimType.ANIM_TYPE_NONE; }
+      set { _ui_anim_type = value; }
+    }
+    //Here has been deleted XmlIgnore
+    [global::System.ComponentModel.Browsable(false)]
+    public bool ui_anim_typeSpecified
+    {
+      get { return _ui_anim_type != null; }
+      set { if (value == (_ui_anim_type== null)) _ui_anim_type = value ? ui_anim_type : (Common.GuiderAnimType?)null; }
+    }
+    private bool ShouldSerializeui_anim_type() { return ui_anim_typeSpecified; }
+    private void Resetui_anim_type() { ui_anim_typeSpecified = false; }
+    
+
+    private string _attach_ui;
+    /// <summary>
+    /// 附加UI动画
+    /// </summary>
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"attach_ui", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string attach_ui
+    {
+      get { return _attach_ui?? ""; }
+      set { _attach_ui = value; }
+    }
+    //Here has been deleted XmlIgnore
+    [global::System.ComponentModel.Browsable(false)]
+    public bool attach_uiSpecified
+    {
+      get { return _attach_ui != null; }
+      set { if (value == (_attach_ui== null)) _attach_ui = value ? attach_ui : (string)null; }
+    }
+    private bool ShouldSerializeattach_ui() { return attach_uiSpecified; }
+    private void Resetattach_ui() { attach_uiSpecified = false; }
+    
+
+    private Common.Vec3 _follow_offset = null;
+    /// <summary>
+    /// UI动画偏移
+    /// </summary>
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"follow_offset", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Common.Vec3 follow_offset
+    {
+      get { return _follow_offset; }
+      set { _follow_offset = value; }
+    }
+
+    private Common.GuiderFollowType? _follow_type;
+    /// <summary>
+    /// UI动画刷新频率
+    /// </summary>
+    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"follow_type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Common.GuiderFollowType follow_type
+    {
+      get { return _follow_type?? Common.GuiderFollowType.FOLLOW_ONCE; }
+      set { _follow_type = value; }
+    }
+    //Here has been deleted XmlIgnore
+    [global::System.ComponentModel.Browsable(false)]
+    public bool follow_typeSpecified
+    {
+      get { return _follow_type != null; }
+      set { if (value == (_follow_type== null)) _follow_type = value ? follow_type : (Common.GuiderFollowType?)null; }
+    }
+    private bool ShouldSerializefollow_type() { return follow_typeSpecified; }
+    private void Resetfollow_type() { follow_typeSpecified = false; }
+    
+
     private Common.GuiderTriggerType? _begin_type;
     /// <summary>
     /// 开始方式
     /// </summary>
-    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"begin_type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"begin_type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public Common.GuiderTriggerType begin_type
     {
       get { return _begin_type?? Common.GuiderTriggerType.TRIGGER_INVALID; }
@@ -344,7 +377,7 @@ namespace Table
     /// <summary>
     /// 结束方式
     /// </summary>
-    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"end_type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(12, IsRequired = false, Name=@"end_type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public Common.GuiderTriggerType end_type
     {
       get { return _end_type?? Common.GuiderTriggerType.TRIGGER_INVALID; }
@@ -365,7 +398,7 @@ namespace Table
     /// <summary>
     /// 是否需要遮罩
     /// </summary>
-    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"need_mask", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(13, IsRequired = false, Name=@"need_mask", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public bool need_mask
     {
       get { return _need_mask?? default(bool); }
@@ -382,23 +415,11 @@ namespace Table
     private void Resetneed_mask() { need_maskSpecified = false; }
     
 
-    private Common.Vec3 _tip_pos = null;
-    /// <summary>
-    /// 提示位置
-    /// </summary>
-    [global::ProtoBuf.ProtoMember(12, IsRequired = false, Name=@"tip_pos", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(null)]
-    public Common.Vec3 tip_pos
-    {
-      get { return _tip_pos; }
-      set { _tip_pos = value; }
-    }
-
     private string _tip_text;
     /// <summary>
     /// 提示内容
     /// </summary>
-    [global::ProtoBuf.ProtoMember(13, IsRequired = false, Name=@"tip_text", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(14, IsRequired = false, Name=@"tip_text", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string tip_text
     {
       get { return _tip_text?? ""; }
@@ -415,38 +436,17 @@ namespace Table
     private void Resettip_text() { tip_textSpecified = false; }
     
 
-    private Common.Vec3 _follow_offset = null;
+    private Common.Vec3 _tip_pos = null;
     /// <summary>
-    /// UI动画偏移
+    /// 提示位置
     /// </summary>
-    [global::ProtoBuf.ProtoMember(14, IsRequired = false, Name=@"follow_offset", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(15, IsRequired = false, Name=@"tip_pos", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
-    public Common.Vec3 follow_offset
+    public Common.Vec3 tip_pos
     {
-      get { return _follow_offset; }
-      set { _follow_offset = value; }
+      get { return _tip_pos; }
+      set { _tip_pos = value; }
     }
-
-    private Common.GuiderFollowType? _follow_type;
-    /// <summary>
-    /// UI动画刷新频率
-    /// </summary>
-    [global::ProtoBuf.ProtoMember(15, IsRequired = false, Name=@"follow_type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public Common.GuiderFollowType follow_type
-    {
-      get { return _follow_type?? Common.GuiderFollowType.FOLLOW_ONCE; }
-      set { _follow_type = value; }
-    }
-    //Here has been deleted XmlIgnore
-    [global::System.ComponentModel.Browsable(false)]
-    public bool follow_typeSpecified
-    {
-      get { return _follow_type != null; }
-      set { if (value == (_follow_type== null)) _follow_type = value ? follow_type : (Common.GuiderFollowType?)null; }
-    }
-    private bool ShouldSerializefollow_type() { return follow_typeSpecified; }
-    private void Resetfollow_type() { follow_typeSpecified = false; }
-    
 
     private bool? _use_replacement;
     /// <summary>

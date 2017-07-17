@@ -15,7 +15,10 @@ public class GameGuider : MonoBehaviour
     /// 遮罩
     /// </summary>
     private Transform m_Mask;
-    private Transform m_Replacement;
+    /// <summary>
+    /// 替代物
+    /// </summary>
+    private RectTransform m_Replacement;
     private Canvas m_GuiderCanvas;
     private Canvas m_FrontCanvas;
     private Transform m_Tip;
@@ -60,7 +63,8 @@ public class GameGuider : MonoBehaviour
 
         m_Mask = this.transform.FindChild("Mask");
         m_Mask.gameObject.SetActive(false);
-        m_Replacement = this.transform.FindChild("Replacement");
+        m_Replacement = this.transform.FindChild("Replacement") as RectTransform;
+        //TODO:Add Click Event
         m_Replacement.gameObject.SetActive(false);
 
         m_Tip = this.transform.FindChild("Front/Tip");
@@ -163,6 +167,7 @@ public class GameGuider : MonoBehaviour
     /// </summary>
     private void RemoveOtherOpenUI()
     {
+        //TODO:Send Event
     }
 
     private void GuiderFinish()
@@ -237,9 +242,26 @@ public class GameGuider : MonoBehaviour
         ShowOrHideAnim(true);
         ShowOrHideTip(true);
 
-        HighLight2D();
-        this.StopCoroutine("IE_RefreshAnimPos");
-        this.StartCoroutine("IE_RefreshAnimPos");
+        if (GameGuiderMgr.Inst.curGuiderUI.is_3d)
+        {
+
+        }
+        else
+        {
+            HighLight2D();
+            this.StopCoroutine("IE_RefreshAnimAndReplacementPos");
+            this.StartCoroutine("IE_RefreshAnimAndReplacementPos");
+        }
+    }
+
+    private void HighLightReplacement()
+    {
+        if (GameGuiderMgr.Inst.curGuiderUI.use_replacement)
+        {
+            m_Replacement.localPosition = Vector3.zero;
+            m_Replacement.sizeDelta = GameGuiderMgr.Vec3ToVector3(GameGuiderMgr.Inst.curGuiderUI.replacement_size);
+            m_Replacement.gameObject.SetActive(true);
+        }
     }
 
     private void HighLight2D()
@@ -248,8 +270,6 @@ public class GameGuider : MonoBehaviour
         {
             return;
         }
-
-        //TODO:替代物
 
         //如果原来带有Canvas，岂不是要破坏？这种情况应该使用替代物
         Canvas tarCanvas = curTarget.GetComponent<Canvas>();
@@ -310,13 +330,18 @@ public class GameGuider : MonoBehaviour
         FinishCurStep();
     }
 
-    private IEnumerator IE_RefreshAnimPos()
+    private IEnumerator IE_RefreshAnimAndReplacementPos()
     {
         if (curTarget == null)
         {
             yield break;
         }
         Vector3 followOffset = GameGuiderMgr.Vec3ToVector3(GameGuiderMgr.Inst.curGuiderUI.follow_offset);
+        Vector3 replacementOffset = Vector3.zero;
+        if (GameGuiderMgr.Inst.curGuiderUI.use_replacement)
+        {
+            replacementOffset = GameGuiderMgr.Vec3ToVector3(GameGuiderMgr.Inst.curGuiderUI.replacement_offset);
+        }
         Vector3 targerPos = Vector3.zero;
         while (true)
         {
@@ -324,9 +349,31 @@ public class GameGuider : MonoBehaviour
             {
                 break;
             }
+            
             targerPos = JerryUtil.CalUIPosRelateToCanvas(curTarget.transform, true);
             m_Anim.localPosition = targerPos - JerryUtil.CalUIPosRelateToCanvas(m_Anim, false) + followOffset;
-            yield return new WaitForEndOfFrame();//TODO
+            if (GameGuiderMgr.Inst.curGuiderUI.use_replacement)
+            {
+                m_Replacement.localPosition = targerPos - JerryUtil.CalUIPosRelateToCanvas(m_Replacement.transform, false) + replacementOffset;
+            }
+
+            switch (GameGuiderMgr.Inst.curGuiderUI.follow_type)
+            {
+                case GuiderFollowType.FOLLOW_ONCE:
+                    {
+                        yield break;
+                    }
+                case GuiderFollowType.FOLLOW_FRAME:
+                    {
+                        yield return new WaitForEndOfFrame();
+                    }
+                    break;
+                case GuiderFollowType.FOLLOW_TIME:
+                    {
+                        yield return new WaitForSeconds(0.1f);
+                    }
+                    break;
+            }
         }
     }
 
@@ -433,7 +480,7 @@ public class GameGuider : MonoBehaviour
                 break;
             case GuiderMsgCmd.MSG_CMD_Reopen:
                 {
-                    //TODO:重做当前引导？是否还有必要
+                    GameGuiderMgr.Inst.TryDoGuider(GameGuiderMgr.Inst.curGuider.id);
                 }
                 break;
         }
@@ -455,7 +502,7 @@ public class GameGuider : MonoBehaviour
         ShowOrHideAnim(false);
         ShowOrHideTip(false);
 
-        this.StopCoroutine("IE_RefreshAnimPos");
+        this.StopCoroutine("IE_RefreshAnimAndReplacementPos");
         this.StopCoroutine("IE_HighLight");
 
         //mask保持，直到下一次设置或者结束关闭
