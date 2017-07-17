@@ -242,16 +242,31 @@ public class GameGuider : MonoBehaviour
         ShowOrHideAnim(true);
         ShowOrHideTip(true);
 
-        if (GameGuiderMgr.Inst.curGuiderUI.is_3d)
+        if (GameGuiderMgr.Inst.curGuiderUI.begin_event != null)
         {
-
+            SendGuiderEvent(GameGuiderMgr.Inst.curGuiderUI.begin_event);
         }
-        else
+
+        if (GameGuiderMgr.Inst.curGuiderUI.use_replacement)
+        {
+            HighLightReplacement();
+        }
+        else if(!GameGuiderMgr.Inst.curGuiderUI.is_3d)
         {
             HighLight2D();
-            this.StopCoroutine("IE_RefreshAnimAndReplacementPos");
-            this.StartCoroutine("IE_RefreshAnimAndReplacementPos");
         }
+
+        this.StopCoroutine("IE_RefreshAnimAndReplacementPos");
+        this.StartCoroutine("IE_RefreshAnimAndReplacementPos");
+    }
+
+    private void SendGuiderEvent(GuiderEvent ge)
+    {
+        if (ge == null)
+        {
+            return;
+        }
+        //TODO:Send Event
     }
 
     private void HighLightReplacement()
@@ -336,6 +351,15 @@ public class GameGuider : MonoBehaviour
         {
             yield break;
         }
+
+        if (GameGuiderMgr.Inst.curGuiderUI.is_3d)
+        {
+            if (string.IsNullOrEmpty(GameGuiderMgr.Inst.curGuiderUI.camera_3d))
+            {
+                yield break;
+            }
+        }
+
         Vector3 followOffset = GameGuiderMgr.Vec3ToVector3(GameGuiderMgr.Inst.curGuiderUI.follow_offset);
         Vector3 replacementOffset = Vector3.zero;
         if (GameGuiderMgr.Inst.curGuiderUI.use_replacement)
@@ -343,18 +367,44 @@ public class GameGuider : MonoBehaviour
             replacementOffset = GameGuiderMgr.Vec3ToVector3(GameGuiderMgr.Inst.curGuiderUI.replacement_offset);
         }
         Vector3 targerPos = Vector3.zero;
+        GameObject camera3DGo = null;
+        Camera camera3D = null;
+
         while (true)
         {
             if (curTarget == null)
             {
                 break;
             }
-            
-            targerPos = JerryUtil.CalUIPosRelateToCanvas(curTarget.transform, true);
-            m_Anim.localPosition = targerPos - JerryUtil.CalUIPosRelateToCanvas(m_Anim, false) + followOffset;
-            if (GameGuiderMgr.Inst.curGuiderUI.use_replacement)
+
+            if (GameGuiderMgr.Inst.curGuiderUI.is_3d)
             {
-                m_Replacement.localPosition = targerPos - JerryUtil.CalUIPosRelateToCanvas(m_Replacement.transform, false) + replacementOffset;
+                if (camera3D == null)
+                {
+                    camera3DGo = GameObject.Find(GameGuiderMgr.Inst.curGuiderUI.camera_3d);
+                    if (camera3DGo != null)
+                    {
+                        camera3D = camera3DGo.GetComponent<Camera>();
+                    }
+                }
+                if (camera3D != null)
+                {
+                    targerPos = camera3D.WorldToScreenPoint(curTarget.transform.position);
+                    m_Anim.localPosition = JerryUtil.PosScreen2Canvas(m_GuiderCanvas, targerPos, m_Anim) + followOffset;
+                    if (GameGuiderMgr.Inst.curGuiderUI.use_replacement)
+                    {
+                        m_Replacement.localPosition = JerryUtil.PosScreen2Canvas(m_GuiderCanvas, targerPos, m_Replacement) + replacementOffset;
+                    }
+                }
+            }
+            else
+            {
+                targerPos = JerryUtil.CalUIPosRelateToCanvas(curTarget.transform, true);
+                m_Anim.localPosition = targerPos - JerryUtil.CalUIPosRelateToCanvas(m_Anim, false) + followOffset;
+                if (GameGuiderMgr.Inst.curGuiderUI.use_replacement)
+                {
+                    m_Replacement.localPosition = targerPos - JerryUtil.CalUIPosRelateToCanvas(m_Replacement.transform, false) + replacementOffset;
+                }
             }
 
             switch (GameGuiderMgr.Inst.curGuiderUI.follow_type)
@@ -502,12 +552,28 @@ public class GameGuider : MonoBehaviour
         ShowOrHideAnim(false);
         ShowOrHideTip(false);
 
+        if (GameGuiderMgr.Inst.curGuiderUI.end_event != null)
+        {
+            SendGuiderEvent(GameGuiderMgr.Inst.curGuiderUI.begin_event);
+        }
+
         this.StopCoroutine("IE_RefreshAnimAndReplacementPos");
         this.StopCoroutine("IE_HighLight");
 
         //mask保持，直到下一次设置或者结束关闭
-
-        UnHighLight2D();
+        if (GameGuiderMgr.Inst.curGuiderUI.use_replacement)
+        {
+            UnHighLightReplacement();
+        }
+        else if (!GameGuiderMgr.Inst.curGuiderUI.is_3d)
+        {
+            UnHighLight2D();
+        }
+    }
+    
+    private void UnHighLightReplacement()
+    {
+        m_Replacement.gameObject.SetActive(false);
     }
 
     private void UnHighLight2D()
