@@ -78,6 +78,7 @@ public class GameGuider : MonoBehaviour
         m_AnimSpecial = m_Anim.FindChild("Special");
         m_AnimSpecial.gameObject.SetActive(false);
 
+        //JerryEventMgr.AddEvent(GameGuiderMgr.GuiderEventType.GuiderMsg.ToString(), EventGuiderMsg);
         awaked = true;
         TryWork();
     }
@@ -167,7 +168,7 @@ public class GameGuider : MonoBehaviour
     /// </summary>
     private void RemoveOtherOpenUI()
     {
-        //TODO:Send Event
+        JerryEventMgr.DispatchEvent(GameGuiderMgr.GuiderEventType.ForceRemoveOtherUI.ToString());
     }
 
     private void GuiderFinish()
@@ -251,7 +252,7 @@ public class GameGuider : MonoBehaviour
         {
             HighLightReplacement();
         }
-        else if(!GameGuiderMgr.Inst.curGuiderUI.is_3d)
+        else if (!GameGuiderMgr.Inst.curGuiderUI.is_3d)
         {
             HighLight2D();
         }
@@ -266,7 +267,7 @@ public class GameGuider : MonoBehaviour
         {
             return;
         }
-        //TODO:Send Event
+        JerryEventMgr.DispatchEvent(ge.name, new object[] { ge.par });
     }
 
     private void HighLightReplacement()
@@ -340,7 +341,7 @@ public class GameGuider : MonoBehaviour
             }
         }
 
-        //TODO:play click audio if need
+        //TODO: play click audio if need
 
         FinishCurStep();
     }
@@ -488,7 +489,7 @@ public class GameGuider : MonoBehaviour
 
     public static void SendGuiderMsg(uint id)
     {
-        //TODO:send event
+        JerryEventMgr.DispatchEvent(GameGuiderMgr.GuiderEventType.GuiderMsg.ToString(), new object[] { id });
     }
 
     /// <summary>
@@ -570,7 +571,7 @@ public class GameGuider : MonoBehaviour
             UnHighLight2D();
         }
     }
-    
+
     private void UnHighLightReplacement()
     {
         m_Replacement.gameObject.SetActive(false);

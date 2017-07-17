@@ -189,4 +189,17 @@ public class GameGuiderMgr : Singleton<GameGuiderMgr>
     }
 
     #endregion 辅助
+
+    public enum GuiderEventType
+    {
+        /// <summary>
+        /// 强制移除其他UI
+        /// </summary>
+        ForceRemoveOtherUI = 0,
+
+        /// <summary>
+        /// 引导消息
+        /// </summary>
+        GuiderMsg = 1,
+    }
 }

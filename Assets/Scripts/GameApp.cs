@@ -17,6 +17,8 @@ public class GameApp : SingletonMono<GameApp>
         ServerCmdLoginRsp();
     }
 
+    #region 服务器模拟
+
     public void ServerCmdSetGuiderState(uint id = 0)
     {
         PlayerPrefs.SetInt("ServerGuiderState", (int)id);
@@ -31,4 +33,6 @@ public class GameApp : SingletonMono<GameApp>
             GameGuiderMgr.Inst.TryDoGuider(guiderId);
         }
     }
+
+    #endregion 服务器模拟
 }
