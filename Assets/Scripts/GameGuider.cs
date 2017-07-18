@@ -64,7 +64,18 @@ public class GameGuider : MonoBehaviour
         m_Mask = this.transform.FindChild("Mask");
         m_Mask.gameObject.SetActive(false);
         m_Replacement = this.transform.FindChild("Replacement") as RectTransform;
-        //TODO:Add Click Event
+        UGUIEventListener.Get(m_Replacement.gameObject).onClick += (go) =>
+        {
+            if (!GameGuiderMgr.Inst.IsInGuider())
+            {
+                return;
+            }
+            if (!GameGuiderMgr.Inst.curGuiderUI.use_replacement)
+            {
+                return;
+            }
+            FinishCurStep();
+        };
         m_Replacement.gameObject.SetActive(false);
 
         m_Tip = this.transform.FindChild("Front/Tip");
@@ -78,9 +89,14 @@ public class GameGuider : MonoBehaviour
         m_AnimSpecial = m_Anim.FindChild("Special");
         m_AnimSpecial.gameObject.SetActive(false);
 
-        //JerryEventMgr.AddEvent(GameGuiderMgr.GuiderEventType.GuiderMsg.ToString(), EventGuiderMsg);
+        JerryEventMgr.AddEvent(GameGuiderMgr.GuiderEventType.GuiderMsg.ToString(), EventGuiderMsg);
         awaked = true;
         TryWork();
+    }
+
+    void OnDestroy()
+    {
+        JerryEventMgr.RemoveEvent(GameGuiderMgr.GuiderEventType.GuiderMsg.ToString(), EventGuiderMsg);
     }
 
     private void InitData(uint id)
@@ -195,6 +211,15 @@ public class GameGuider : MonoBehaviour
             m_AnimCommonCtr.SetInteger("id", type.GetHashCode());
         }
     }
+
+    #region 事件
+
+    private void EventGuiderMsg(object[] args)
+    {
+        FinishCurStep();
+    }
+
+    #endregion 事件
 
     #region GuiderUI
 

@@ -34,5 +34,10 @@ public class GameApp : SingletonMono<GameApp>
         }
     }
 
+    public void ServerStatistical(uint id)
+    {
+        JerryDebug.Inst.LogInfo("Statistical : " + id);
+    }
+
     #endregion 服务器模拟
 }

@@ -127,7 +127,7 @@ public class GameGuiderMgr : Singleton<GameGuiderMgr>
             }
             if (curGuiderUI.statistical)
             {
-                //TODO:send server
+                GameApp.Inst.ServerStatistical(curGuiderUI.id);
             }
             GuiderUITblMgr.Inst.TryGetValue(curGuiderUI.next_id, out curGuiderUI);
         }
