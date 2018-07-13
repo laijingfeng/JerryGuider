@@ -58,12 +58,12 @@ public class GameGuider : MonoBehaviour
 
         m_GuiderCanvas = this.transform.GetComponent<Canvas>();
         m_GuiderCanvas.sortingOrder = GuiderCanvasSortingOrder;
-        m_FrontCanvas = this.transform.FindChild("Front").GetComponent<Canvas>();
+        m_FrontCanvas = this.transform.Find("Front").GetComponent<Canvas>();
         m_FrontCanvas.sortingOrder = GuiderCanvasSortingOrder + 2;
 
-        m_Mask = this.transform.FindChild("Mask");
+        m_Mask = this.transform.Find("Mask");
         m_Mask.gameObject.SetActive(false);
-        m_Replacement = this.transform.FindChild("Replacement") as RectTransform;
+        m_Replacement = this.transform.Find("Replacement") as RectTransform;
         UGUIEventListener.Get(m_Replacement.gameObject).onClick += (go) =>
         {
             if (!GameGuiderMgr.Inst.IsInGuider())
@@ -78,15 +78,15 @@ public class GameGuider : MonoBehaviour
         };
         m_Replacement.gameObject.SetActive(false);
 
-        m_Tip = this.transform.FindChild("Front/Tip");
+        m_Tip = this.transform.Find("Front/Tip");
         m_Tip.gameObject.SetActive(false);
-        m_TipText = m_Tip.FindChild("Text").GetComponent<Text>();
+        m_TipText = m_Tip.Find("Text").GetComponent<Text>();
 
-        m_Anim = this.transform.FindChild("Front/Anim");
-        m_AnimCommon = m_Anim.FindChild("Common");
+        m_Anim = this.transform.Find("Front/Anim");
+        m_AnimCommon = m_Anim.Find("Common");
         m_AnimCommon.gameObject.SetActive(true);
         m_AnimCommonCtr = m_AnimCommon.GetComponent<Animator>();
-        m_AnimSpecial = m_Anim.FindChild("Special");
+        m_AnimSpecial = m_Anim.Find("Special");
         m_AnimSpecial.gameObject.SetActive(false);
 
         JerryEventMgr.AddEvent(GameGuiderMgr.GuiderEventType.GuiderMsg.ToString(), EventGuiderMsg);
